@@ -13,44 +13,42 @@
       line-height: 1.7;
       background-color: #fafafa;
       scroll-behavior: smooth;
+      padding-top: 70px; /* space for fixed navbar */
     }
 
     a { color: inherit; text-decoration: none; }
-    
-/* Navigation Bar */
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.95);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  z-index: 1000;
-}
 
-.navbar ul {
-  list-style: none;
-  display: flex;
-  gap: 40px;
-  padding: 15px 20px;
-  margin: 0;
-}
+    /* Navigation Bar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
 
-.navbar li { font-weight: 600; font-size: 1rem; }
-.navbar li:hover { color: #A47149; cursor: pointer; }
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 40px;
+      padding: 15px 20px;
+      margin: 0;
+    }
 
-/* Make sure content isn’t hidden behind navbar */
-body { padding-top: 70px; }
+    .navbar li { font-weight: 600; font-size: 1rem; }
+    .navbar li:hover { color: #A47149; cursor: pointer; }
 
-/* Responsive navbar */
-@media (max-width: 768px) {
-  .navbar ul { flex-direction: column; gap: 15px; }
-}
-    
+    @media (max-width: 768px) {
+      .navbar ul { flex-direction: column; gap: 15px; }
+    }
+
+    /* Hero Section */
     .hero {
-      background-image: url('https://images.unsplash.com/photo-1503602642458-232111445657?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200'); /* Random luxury beauty image */
+      background-image: url('https://images.unsplash.com/photo-1503602642458-232111445657?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200');
       background-size: cover;
       background-position: center;
       height: 100vh;
@@ -67,14 +65,15 @@ body { padding-top: 70px; }
     .hero h1 { font-size: 3rem; margin: 0; }
     .hero p { font-size: 1.3rem; margin-top: 15px; }
 
+    /* Sections */
     .section {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 0 20px;
+      padding: 80px 20px;
     }
 
     .section:nth-child(even) { background-color: #fff8f0; }
@@ -82,11 +81,11 @@ body { padding-top: 70px; }
     .section p { max-width: 700px; font-size: 1.1rem; margin-bottom: 15px; }
     .highlight { color: #A47149; font-weight: 600; }
 
-    /* Optional fade-in on scroll */
+    /* Fade-in on scroll */
     .fade-in { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-    /* Product image section */
+    /* Product Cards */
     .products {
       display: flex;
       flex-wrap: wrap;
@@ -109,6 +108,14 @@ body { padding-top: 70px; }
     .product-card h3 { font-size: 1.5em; color: #8a2be2; margin-bottom: 10px; }
     .product-card p { color: #555; font-size: 1em; }
 
+    /* Section images */
+    .section img {
+      width: 70%;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+
+    /* Footer */
     .footer {
       text-align: center;
       padding: 30px 20px;
@@ -120,19 +127,32 @@ body { padding-top: 70px; }
 </head>
 <body>
 
+  <!-- Navigation -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
   <!-- Hero Section -->
-  <section class="hero">
+  <section class="hero" id="home">
     <h1>Glow Dynasty</h1>
     <p>Where inner radiance meets modern rituals.</p>
   </section>
 
-  <!-- Scrollable Sections -->
-  <section class="section fade-in">
+  <!-- About Section -->
+  <section class="section fade-in" id="about">
+    <img src="https://images.unsplash.com/photo-1620913059600-1b72d50c234f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="About">
     <h2>Beauty Beyond the Surface</h2>
     <p><span class="highlight">Glow Dynasty</span> celebrates beauty that goes beyond the surface. True radiance comes from the harmony between <strong>inner confidence and outer care</strong> — and glowing skin and makeup don’t need a luxury price tag.</p>
   </section>
 
-  <section class="section fade-in">
+  <!-- Products Section -->
+  <section class="section fade-in" id="shop">
     <h2>Our Products</h2>
     <p>We offer both <strong>skincare & cosmetics</strong> to nourish your skin and <strong>makeup</strong> to highlight your features. Every product is carefully selected to make you feel confident and radiant.</p>
     <div class="products">
@@ -146,17 +166,26 @@ body { padding-top: 70px; }
         <h3>Makeup</h3>
         <p>Lipsticks, foundations, and eyeshadow palettes to enhance your natural beauty.</p>
       </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1612437001036-1d9c9cbd4296?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Face Masks">
+        <h3>Face Masks</h3>
+        <p>Nourishing sheet masks and clay masks for all skin types.</p>
+      </div>
     </div>
   </section>
 
-  <section class="section fade-in">
-    <h2>Timeless Rituals</h2>
-    <p>Inspired by K-, J-, and C-Beauty, Glow Dynasty brings together gentle skincare, transformative makeup, wellness rituals, and cultural inspiration — helping you <strong>look and feel your best naturally</strong>.</p>
+  <!-- Blog Section -->
+  <section class="section fade-in" id="blog">
+    <img src="https://images.unsplash.com/photo-1581091870624-7f6d6d3b6e69?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Blog">
+    <h2>Glow Journal</h2>
+    <p>Tips, product comparisons, routines, and inspiration to elevate your beauty rituals.</p>
   </section>
 
-  <section class="section fade-in">
-    <h2>Accessible Luxury for Every Glow</h2>
-    <p>We are here for those who value <strong>self-care, authenticity, and balance</strong>. Beauty isn’t about perfection — it’s about embracing yourself, enjoying your routine, and cultivating a glow that shines from within.</p>
+  <!-- Contact Section -->
+  <section class="section fade-in" id="contact">
+    <img src="https://images.unsplash.com/photo-1613145992690-8b0c8d8b9c65?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Contact">
+    <h2>Contact Us</h2>
+    <p>Have questions? Reach out to us and we’ll help you find your perfect glow.</p>
   </section>
 
   <div class="footer">
