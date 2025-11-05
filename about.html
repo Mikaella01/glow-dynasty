@@ -3,58 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About | Glow Dynasty</title>
+  <title>About Glow Dynasty</title>
   <style>
-    /* Basic Reset */
-    * {
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: 'Arial', sans-serif;
-    }
-
-    body {
-      line-height: 1.6;
       color: #333;
-      background-color: #fffafc;
+      line-height: 1.7;
+      background-color: #fafafa;
+      scroll-behavior: smooth;
     }
 
-    /* Section Styles */
-    section {
-      padding: 80px 20px;
-      text-align: center;
-    }
+    a { color: inherit; text-decoration: none; }
 
     .hero {
-      background: linear-gradient(to right, #f9f0f5, #fffafc);
+      background-image: url('https://images.unsplash.com/photo-1503602642458-232111445657?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200'); /* Random luxury beauty image */
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 120px 20px;
+      color: white;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      text-align: center;
+      padding: 0 20px;
     }
 
-    .hero h1 {
-      font-size: 3em;
-      margin-bottom: 20px;
-      color: #8a2be2;
+    .hero h1 { font-size: 3rem; margin: 0; }
+    .hero p { font-size: 1.3rem; margin-top: 15px; }
+
+    .section {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
     }
 
-    .hero p {
-      font-size: 1.2em;
-      max-width: 600px;
-      color: #555;
-    }
+    .section:nth-child(even) { background-color: #fff8f0; }
+    .section h2 { font-size: 2rem; margin-bottom: 15px; color: #6B4C3B; }
+    .section p { max-width: 700px; font-size: 1.1rem; margin-bottom: 15px; }
+    .highlight { color: #A47149; font-weight: 600; }
 
-    .offer-cards {
+    /* Optional fade-in on scroll */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* Product image section */
+    .products {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 40px;
-      margin-top: 50px;
+      margin-top: 30px;
     }
 
-    .card {
+    .product-card {
       background: #fff;
       border-radius: 15px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
@@ -63,82 +72,17 @@
       transition: transform 0.3s ease;
     }
 
-    .card:hover {
-      transform: translateY(-10px);
-    }
+    .product-card:hover { transform: translateY(-10px); }
+    .product-card img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
+    .product-card h3 { font-size: 1.5em; color: #8a2be2; margin-bottom: 10px; }
+    .product-card p { color: #555; font-size: 1em; }
 
-    .card img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-
-    .card h3 {
-      font-size: 1.5em;
-      color: #8a2be2;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: #555;
-      font-size: 1em;
-    }
-
-    .philosophy {
-      background: #f3e8ff;
-      padding: 100px 20px;
-    }
-
-    .philosophy h2 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-      color: #8a2be2;
-    }
-
-    .philosophy p {
-      font-size: 1.2em;
-      max-width: 700px;
-      margin: 0 auto;
-      color: #555;
-    }
-
-    .cta {
-      padding: 80px 20px;
-      background: linear-gradient(to right, #fffafc, #f9f0f5);
-    }
-
-    .cta h2 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-      color: #8a2be2;
-    }
-
-    .cta p {
-      font-size: 1.2em;
-      color: #555;
-      margin-bottom: 40px;
-    }
-
-    .cta a {
-      text-decoration: none;
-      background: #8a2be2;
-      color: white;
-      padding: 15px 30px;
-      border-radius: 50px;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-
-    .cta a:hover {
-      background: #5d1fa3;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .offer-cards {
-        flex-direction: column;
-        align-items: center;
-      }
+    .footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #888;
+      font-size: 0.9rem;
+      border-top: 1px solid #eaeaea;
     }
   </style>
 </head>
@@ -146,39 +90,61 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <h1>Glow Inside & Out</h1>
-    <p>Discover beauty that nourishes your skin and highlights your features—all without breaking the bank.</p>
+    <h1>Glow Dynasty</h1>
+    <p>Where inner radiance meets modern rituals.</p>
   </section>
 
-  <!-- What We Offer Section -->
-  <section>
-    <h2>Your Beauty Destination</h2>
-    <div class="offer-cards">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1600180758895-5ad3f6c22350?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8c2tpbmNhcmV8fHx8fHwxNjg3MjQ5MzI4&ixlib=rb-4.0.3&q=80&w=400" alt="Skincare Products">
+  <!-- Scrollable Sections -->
+  <section class="section fade-in">
+    <h2>Beauty Beyond the Surface</h2>
+    <p><span class="highlight">Glow Dynasty</span> celebrates beauty that goes beyond the surface. True radiance comes from the harmony between <strong>inner confidence and outer care</strong> — and glowing skin and makeup don’t need a luxury price tag.</p>
+  </section>
+
+  <section class="section fade-in">
+    <h2>Our Products</h2>
+    <p>We offer both <strong>skincare & cosmetics</strong> to nourish your skin and <strong>makeup</strong> to highlight your features. Every product is carefully selected to make you feel confident and radiant.</p>
+    <div class="products">
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1600180758895-5ad3f6c22350?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Skincare Products">
         <h3>Skincare & Cosmetics</h3>
-        <p>Hydrating creams, serums, masks, and toners—products that care for your skin’s health.</p>
+        <p>Hydrating creams, serums, masks, and toners to care for your skin’s health.</p>
       </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1585105112545-dac9b1cfb053?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8bWFrZXVwfHx8fHwxNjg3MjQ5MzYw&ixlib=rb-4.0.3&q=80&w=400" alt="Makeup Products">
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1585105112545-dac9b1cfb053?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Makeup Products">
         <h3>Makeup</h3>
-        <p>Lipsticks, foundations, eyeshadow palettes—products that enhance your natural beauty.</p>
+        <p>Lipsticks, foundations, and eyeshadow palettes to enhance your natural beauty.</p>
       </div>
     </div>
   </section>
 
-  <!-- Philosophy Section -->
-  <section class="philosophy">
-    <h2>Luxury Meets Affordability</h2>
-    <p>We believe that feeling confident in your skin shouldn’t cost a fortune. From glowing skincare essentials to must-have makeup, we curate products that make you look and feel amazing.</p>
+  <section class="section fade-in">
+    <h2>Timeless Rituals</h2>
+    <p>Inspired by K-, J-, and C-Beauty, Glow Dynasty brings together gentle skincare, transformative makeup, wellness rituals, and cultural inspiration — helping you <strong>look and feel your best naturally</strong>.</p>
   </section>
 
-  <!-- Call to Action Section -->
-  <section class="cta">
-    <h2>Ready to Explore?</h2>
-    <p>Scroll down to shop, learn, and glow with our handpicked selection.</p>
-    <a href="#">Shop Now</a>
+  <section class="section fade-in">
+    <h2>Accessible Luxury for Every Glow</h2>
+    <p>We are here for those who value <strong>self-care, authenticity, and balance</strong>. Beauty isn’t about perfection — it’s about embracing yourself, enjoying your routine, and cultivating a glow that shines from within.</p>
   </section>
+
+  <div class="footer">
+    &copy; 2025 Glow Dynasty. All Rights Reserved.
+  </div>
+
+  <script>
+    // Fade-in on scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.3 };
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        appearOnScroll.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => appearOnScroll.observe(fader));
+  </script>
 
 </body>
 </html>
