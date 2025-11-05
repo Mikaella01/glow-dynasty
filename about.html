@@ -16,7 +16,38 @@
     }
 
     a { color: inherit; text-decoration: none; }
+/* Navigation Bar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
 
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  padding: 15px 20px;
+  margin: 0;
+}
+
+.navbar li { font-weight: 600; font-size: 1rem; }
+.navbar li:hover { color: #A47149; cursor: pointer; }
+
+/* Make sure content isn’t hidden behind navbar */
+body { padding-top: 70px; }
+
+/* Responsive navbar */
+@media (max-width: 768px) {
+  .navbar ul { flex-direction: column; gap: 15px; }
+}
+    
     .hero {
       background-image: url('https://images.unsplash.com/photo-1503602642458-232111445657?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200'); /* Random luxury beauty image */
       background-size: cover;
