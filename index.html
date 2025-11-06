@@ -8,7 +8,7 @@
   <style>
     /* Reset */
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-
+    html { scroll-behavior: smooth; } /* Smooth scrolling */
     body { line-height: 1.6; color: #333; }
 
     /* Announcement Bar */
@@ -77,23 +77,23 @@
 
   <!-- Navigation -->
   <nav>
-    <a href="#" class="logo">Glow Dynasty</a>
+    <a href="#home" class="logo">Glow Dynasty</a>
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Shop</a></li>
-      <li><a href="#">Glow Journal</a></li>
-      <li><a href="#">Skin Quiz</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#blog">Glow Journal</a></li>
+      <li><a href="#quiz">Skin Quiz</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
   <!-- Hero Section -->
-  <div class="hero">
+  <div id="home" class="hero">
     <h1>Timeless Radiance. Modern Rituals.</h1>
   </div>
 
   <!-- Categories Section -->
-  <section>
+  <section id="shop">
     <h2>Shop by Origin</h2>
     <div class="categories">
       <div class="category-card">
@@ -112,7 +112,7 @@
   </section>
 
   <!-- Featured Products -->
-  <section>
+  <section id="blog">
     <h2>Featured Products</h2>
     <div class="products">
       <div class="product-card">
@@ -136,6 +136,18 @@
         <p>$39.99</p>
       </div>
     </div>
+  </section>
+
+  <!-- Skin Quiz -->
+  <section id="quiz">
+    <h2>Skin Quiz</h2>
+    <!-- Quiz content goes here -->
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <!-- Contact form goes here -->
   </section>
 
   <!-- Promotional Banner -->
