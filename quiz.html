@@ -194,11 +194,64 @@ button.restart-btn { display:block; margin:20px auto 0 auto; padding:12px 20px; 
 
 </div>
 
-<!-- Advice Popup -->
+<!-- Advice Popup for Question 1 -->
 <div class="popup" id="advice-popup">
-  <div id="advice-text"></div>
-  <div id="advice-images"></div>
-  <button onclick="closeAdvice()">Close</button>
+  <div class="popup-header">
+    <h3>Skin Concerns Explained</h3>
+    <button onclick="closeAdvice()" class="close-btn">&times;</button>
+  </div>
+  <div class="popup-grid">
+    <div class="advice-card">
+      <img src="https://via.placeholder.com/150?text=Texture" alt="Skin Texture">
+      <h4>Skin texture / dullness</h4>
+      <p>Uneven skin, rough patches, or dullness.</p>
+    </div>
+    <div class="advice-card">
+      <img src="https://via.placeholder.com/150?text=Wrinkles" alt="Wrinkles">
+      <h4>Wrinkles & fine lines</h4>
+      <p>Signs of aging, fine lines, or wrinkles.</p>
+    </div>
+    <div class="advice-card">
+      <img src="https://via.placeholder.com/150?text=Acne" alt="Active Acne">
+      <h4>Active acne breakout</h4>
+      <p>Current pimples or breakouts.</p>
+    </div>
+    <div class="advice-card">
+      <img src="https://via.placeholder.com/150?text=Prevent+Acne" alt="Prevent Acne">
+      <h4>Help prevent new acne</h4>
+      <p>Focus on preventing future breakouts.</p>
+    </div>
+    <div class="advice-card">
+      <img src="https://via.placeholder.com/150?text=Dry+Skin" alt="Dry Skin">
+      <h4>Dry skin</h4>
+      <p>Tight, flaky, or dehydrated skin.</p>
+    </div>
+    <div class="advice-card">
+      <img src="https://via.placeholder.com/150?text=Dark+Spots" alt="Dark Spots">
+      <h4>Dark spots</h4>
+      <p>Hyperpigmentation or sun spots.</p>
+    </div>
+    <div class="advice-card">
+      <img src="https://via.placeholder.com/150?text=Dark+Circles" alt="Dark Circles">
+      <h4>Dark circles & puffiness</h4>
+      <p>Under-eye circles or puffiness.</p>
+    </div>
+    <div class="advice-card">
+      <img src="https://via.placeholder.com/150?text=Post+Acne" alt="Post Acne">
+      <h4>Post acne marks</h4>
+      <p>Scars or discoloration left from acne.</p>
+    </div>
+    <div class="advice-card">
+      <img src="https://via.placeholder.com/150?text=General+Care" alt="General Care">
+      <h4>General skin care routine</h4>
+      <p>Looking for everyday skincare guidance.</p>
+    </div>
+    <div class="advice-card">
+      <img src="https://via.placeholder.com/150?text=Prefer+Not" alt="Prefer Not">
+      <h4>Prefer not to answer</h4>
+      <p>No preference or not sure yet.</p>
+    </div>
+  </div>
 </div>
 
 <script>
