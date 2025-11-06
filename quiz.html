@@ -1,145 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Glow Dynasty Skin Quiz</title>
-  <style>
-    body {
-      font-family: 'Helvetica', Arial, sans-serif;
-      margin: 0;
-      background-color: #fdfaf6;
-      color: #333;
-    }
-    header {
-      background: #fff;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    nav {
-      text-align: center;
-      margin-top: 10px;
-    }
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-      color: #333;
-      transition: 0.3s;
-    }
-    nav a:hover {
-      color: #b86b5c;
-    }
-    h1 {
-      text-align: center;
-      color: #b86b5c;
-      margin-top: 20px;
-    }
-    .quiz-container {
-      max-width: 700px;
-      margin: 30px auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.05);
-    }
-    .question {
-      font-weight: bold;
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-    }
-    .options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .option button {
-      padding: 12px;
-      font-size: 1rem;
-      border-radius: 10px;
-      border: 1px solid #b86b5c;
-      background: #fff;
-      cursor: pointer;
-      transition: 0.3s;
-      text-align: left;
-    }
-    .option button:hover {
-      background: #b86b5c;
-      color: #fff;
-    }
-    .popup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: #fff;
-      padding: 25px;
-      border-radius: 16px;
-      max-width: 500px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-      z-index: 2000;
-      overflow-y: auto;
-      max-height: 80%;
-    }
-    .popup img {
-      max-width: 100px;
-      margin: 5px;
-      border-radius: 8px;
-    }
-    .popup button {
-      margin-top: 15px;
-      padding: 10px 15px;
-      background: #b86b5c;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .results {
-      display: none;
-      margin-top: 20px;
-    }
-    .results h2 {
-      text-align: center;
-      color: #b86b5c;
-    }
-    .product-card {
-      text-align: center;
-      margin: 15px 0;
-      padding: 15px;
-      background: #fef9f4;
-      border-radius: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-    .product-card img {
-      max-width: 150px;
-      border-radius: 8px;
-    }
-    .product-card a {
-      display: inline-block;
-      margin-top: 8px;
-      color: #b86b5c;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .product-card a:hover {
-      text-decoration: underline;
-    }
-    button.restart-btn {
-      display: block;
-      margin: 20px auto 0 auto;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 12px;
-      background: #b86b5c;
-      color: #fff;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glow Dynasty Skin Quiz</title>
+<style>
+body {
+  font-family: 'Helvetica', Arial, sans-serif;
+  margin: 0;
+  background-color: #fdfaf6;
+  color: #333;
+}
+header {
+  background: #fff;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+nav {
+  text-align: center;
+  margin-top: 10px;
+}
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+  transition: 0.3s;
+}
+nav a:hover { color: #b86b5c; }
+h1 { text-align:center; color:#b86b5c; margin-top:20px; }
+.quiz-container {
+  max-width:700px;
+  margin:30px auto;
+  background:#fff;
+  padding:30px;
+  border-radius:16px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.05);
+}
+.question { font-weight:bold; font-size:1.3rem; margin-bottom:10px; }
+.options { display:flex; flex-direction:column; gap:10px; margin-top:10px; }
+.option button {
+  padding:12px;
+  font-size:1rem;
+  border-radius:10px;
+  border:1px solid #b86b5c;
+  background:#fff;
+  cursor:pointer;
+  transition:0.3s;
+  text-align:left;
+}
+.option button.selected { background:#b86b5c; color:#fff; }
+.option button:hover { background:#f5cfc1; }
+.confirm-btn {
+  display:none;
+  margin-top:20px;
+  padding:12px 20px;
+  border:none;
+  border-radius:12px;
+  background:#b86b5c;
+  color:#fff;
+  cursor:pointer;
+  font-size:1rem;
+}
+.popup {
+  display:none;
+  position:fixed;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  background:#fff;
+  padding:25px;
+  border-radius:16px;
+  max-width:500px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.2);
+  z-index:2000;
+  overflow-y:auto;
+  max-height:80%;
+}
+.popup img { max-width:100px; margin:5px; border-radius:8px; }
+.popup button {
+  margin-top:15px;
+  padding:10px 15px;
+  background:#b86b5c;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+.results { display:none; margin-top:20px; }
+.results h2 { text-align:center; color:#b86b5c; }
+.product-card {
+  text-align:center;
+  margin:15px 0;
+  padding:15px;
+  background:#fef9f4;
+  border-radius:16px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
+.product-card img { max-width:150px; border-radius:8px; }
+.product-card a { display:inline-block; margin-top:8px; color:#b86b5c; text-decoration:none; font-weight:bold; }
+.product-card a:hover { text-decoration:underline; }
+button.restart-btn {
+  display:block;
+  margin:20px auto 0 auto;
+  padding:12px 20px;
+  border:none;
+  border-radius:12px;
+  background:#b86b5c;
+  color:#fff;
+  font-size:1rem;
+  cursor:pointer;
+}
+</style>
 </head>
 <body>
 
@@ -155,7 +127,6 @@
 </header>
 
 <div class="quiz-container">
-
   <!-- Question 1 -->
   <div class="question-section" id="q1">
     <div class="question">1. What is your main skin concern?</div>
@@ -174,6 +145,7 @@
       <div class="option"><button data-value="general">General skin care routine</button></div>
       <div class="option"><button data-value="prefer-not">Prefer not to answer</button></div>
     </div>
+    <button class="confirm-btn" id="confirm-btn1">Confirm</button>
   </div>
 
   <!-- Question 2 -->
@@ -185,6 +157,7 @@
       <div class="option"><button data-value="combination">Combination (tight cheeks, shiny T-zone)</button></div>
       <div class="option"><button data-value="normal">Normal/balanced (even, not too oily or dry)</button></div>
     </div>
+    <button class="confirm-btn" id="confirm-btn2">Confirm</button>
   </div>
 
   <!-- Question 3 -->
@@ -195,11 +168,11 @@
       <div class="option"><button data-value="no">No</button></div>
       <div class="option"><button data-value="a-little">A little</button></div>
     </div>
+    <button class="confirm-btn" id="confirm-btn3">Confirm</button>
   </div>
 
   <!-- Results -->
   <div class="results" id="results"></div>
-
 </div>
 
 <!-- Advice Popup -->
@@ -212,9 +185,6 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const answers = {};
-  const questionSections = document.querySelectorAll(".question-section");
-  const resultsDiv = document.getElementById("results");
-
   const adviceData = {
     "texture": {text:"Uneven skin, rough patches, or dullness.", img:"https://via.placeholder.com/150?text=Texture"},
     "wrinkles": {text:"Fine lines or wrinkles.", img:"https://via.placeholder.com/150?text=Wrinkles"},
@@ -227,7 +197,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "general": {text:"General skincare routine.", img:"https://via.placeholder.com/150?text=General+Care"}
   };
 
-  function showAdvice() {
+  // Advice popup
+  document.getElementById("advice-btn").addEventListener("click", () => {
     const popup = document.getElementById("advice-popup");
     let html = "<h3>Skin Concerns Explained</h3>";
     let imagesHtml = "";
@@ -238,54 +209,63 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("advice-text").innerHTML = html;
     document.getElementById("advice-images").innerHTML = imagesHtml;
     popup.style.display = "block";
-  }
+  });
+  window.closeAdvice = function(){ document.getElementById("advice-popup").style.display = "none"; }
 
-  window.closeAdvice = function(){
-    document.getElementById("advice-popup").style.display = "none";
-  }
+  function setupQuestion(qId, confirmBtnId, answerKey, nextQId=null){
+    const section = document.getElementById(qId);
+    const buttons = section.querySelectorAll(".option button");
+    const confirmBtn = document.getElementById(confirmBtnId);
+    let selected = null;
 
-  document.getElementById("advice-btn").addEventListener("click", showAdvice);
+    buttons.forEach(btn => btn.addEventListener("click", () => {
+      buttons.forEach(b=>b.classList.remove("selected"));
+      btn.classList.add("selected");
+      selected = btn.dataset.value;
+      confirmBtn.style.display = "inline-block";
+    }));
 
-  document.querySelectorAll(".question-section .option button").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const parent = btn.closest(".question-section");
-      if(parent.id === "q1") answers.q1 = btn.dataset.value;
-      if(parent.id === "q2") answers.q2 = btn.dataset.value;
-      if(parent.id === "q3") answers.q3 = btn.dataset.value;
-
-      parent.style.display = "none";
-      const next = parent.nextElementSibling;
-      if(next && next.classList.contains("question-section")) next.style.display = "block";
+    confirmBtn.addEventListener("click", () => {
+      if(!selected) return;
+      answers[answerKey] = selected;
+      section.style.display = "none";
+      if(nextQId) document.getElementById(nextQId).style.display = "block";
       else showResults();
     });
-  });
+  }
+
+  setupQuestion("q1","confirm-btn1","q1","q2");
+  setupQuestion("q2","confirm-btn2","q2","q3");
+  setupQuestion("q3","confirm-btn3","q3");
 
   function showResults(){
+    const resultsDiv = document.getElementById("results");
     resultsDiv.innerHTML = "<h2>Your Skincare Recommendations</h2>";
-
-    // Example products (replace with your real mapping)
     const products = [
       {name:"Radiance Cream", img:"https://via.placeholder.com/150", link:"#"},
       {name:"Glow Balance Serum", img:"https://via.placeholder.com/150", link:"#"},
       {name:"Blemish Spot Treatment", img:"https://via.placeholder.com/150", link:"#"}
     ];
-
     products.forEach(p=>{
       const card = document.createElement("div");
       card.classList.add("product-card");
       card.innerHTML = `<img src="${p.img}" alt="${p.name}"><h3>${p.name}</h3><a href="${p.link}">Shop Now</a>`;
       resultsDiv.appendChild(card);
     });
-
     resultsDiv.innerHTML += '<button class="restart-btn" onclick="restartQuiz()">Restart Quiz</button>';
     resultsDiv.style.display = "block";
   }
 
   window.restartQuiz = function(){
-    answers.q1 = answers.q2 = answers.q3 = undefined;
-    questionSections.forEach(q=>q.style.display="block");
-    resultsDiv.style.display="none";
+    ["q1","q2","q3"].forEach(q=>{
+      const sec = document.getElementById(q);
+      sec.style.display = q==="q1"?"block":"none";
+      sec.querySelectorAll(".option button").forEach(b=>b.classList.remove("selected"));
+      sec.querySelector(".confirm-btn").style.display = "none";
+    });
+    document.getElementById("results").style.display = "none";
   }
+
 });
 </script>
 
