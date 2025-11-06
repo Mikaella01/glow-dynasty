@@ -70,40 +70,6 @@
       background: #b86b5c;
       color: #fff;
     }
-    .advice {
-      display: inline-block;
-      margin-left: 10px;
-      color: #b86b5c;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .popup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: #fff;
-      padding: 25px;
-      border-radius: 16px;
-      max-width: 400px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-      z-index: 2000;
-    }
-    .popup img {
-      max-width: 100%;
-      border-radius: 8px;
-      margin-top: 10px;
-    }
-    .popup button {
-      margin-top: 15px;
-      padding: 10px 14px;
-      border: none;
-      background: #b86b5c;
-      color: #fff;
-      border-radius: 8px;
-      cursor: pointer;
-    }
     .results {
       display: none;
       margin-top: 20px;
@@ -144,6 +110,33 @@
       display: block;
       margin: 20px auto 0 auto;
     }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 25px;
+      border-radius: 16px;
+      max-width: 500px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      z-index: 2000;
+    }
+    .popup img {
+      max-width: 100px;
+      border-radius: 8px;
+      margin: 5px;
+    }
+    .popup button {
+      margin-top: 15px;
+      padding: 10px 14px;
+      border: none;
+      background: #b86b5c;
+      color: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -166,16 +159,21 @@
     <div class="question-section" id="q1">
       <div class="question">1. What is your main skin concern?</div>
       <div class="options">
-        <div class="option"><button data-value="texture">Skin texture/dullness <span class="advice" onclick="showAdvice('texture')">(!)</span></button></div>
-        <div class="option"><button data-value="wrinkles">Wrinkles & fine lines <span class="advice" onclick="showAdvice('wrinkles')">(!)</span></button></div>
-        <div class="option"><button data-value="active-acne">Active acne breakout <span class="advice" onclick="showAdvice('active-acne')">(!)</span></button></div>
-        <div class="option"><button data-value="prevent-acne">Help prevent new acne <span class="advice" onclick="showAdvice('prevent-acne')">(!)</span></button></div>
-        <div class="option"><button data-value="dry">Dry skin <span class="advice" onclick="showAdvice('dry')">(!)</span></button></div>
-        <div class="option"><button data-value="dark-spots">Dark spots <span class="advice" onclick="showAdvice('dark-spots')">(!)</span></button></div>
-        <div class="option"><button data-value="dark-circles">Dark circles & puffiness around eyes <span class="advice" onclick="showAdvice('dark-circles')">(!)</span></button></div>
-        <div class="option"><button data-value="post-acne">Post acne marks <span class="advice" onclick="showAdvice('post-acne')">(!)</span></button></div>
-        <div class="option"><button data-value="general">General skin care routine <span class="advice" onclick="showAdvice('general')">(!)</span></button></div>
+        <div class="option"><button data-value="texture">Skin texture/dullness</button></div>
+        <div class="option"><button data-value="wrinkles">Wrinkles & fine lines</button></div>
+        <div class="option"><button data-value="active-acne">Active acne breakout</button></div>
+        <div class="option"><button data-value="prevent-acne">Help prevent new acne</button></div>
+        <div class="option"><button data-value="dry">Dry skin</button></div>
+        <div class="option"><button data-value="dark-spots">Dark spots</button></div>
+        <div class="option"><button data-value="dark-circles">Dark circles & puffiness around eyes</button></div>
+        <div class="option"><button data-value="post-acne">Post acne marks</button></div>
+        <div class="option"><button data-value="general">General skin care routine</button></div>
         <div class="option"><button data-value="prefer-not">Prefer not to answer</button></div>
+      </div>
+
+      <!-- Single advice button below -->
+      <div style="margin-top:15px; text-align:right;">
+        <button style="background:#b86b5c; color:#fff; border:none; padding:8px 12px; border-radius:8px; cursor:pointer;" onclick="showAdvice('all')">Need advice (!)</button>
       </div>
     </div>
 
@@ -205,10 +203,10 @@
 
   </div>
 
-  <!-- Popups for Advice -->
+  <!-- Advice popup -->
   <div class="popup" id="advice-popup">
     <div id="advice-text"></div>
-    <img id="advice-img" src="" alt="Skin example">
+    <div id="advice-images" style="margin-top:10px;"></div>
     <button onclick="closeAdvice()">Close</button>
   </div>
 
@@ -217,22 +215,59 @@
     const questionSections = document.querySelectorAll('.question-section');
     const results = document.getElementById('results');
 
-    // Question buttons
     document.querySelectorAll('.question-section button').forEach(button => {
-      button.addEventListener('click', (e) => {
+      button.addEventListener('click', () => {
         const parent = button.closest('.question-section');
-        if (parent.id === 'q1') answers.q1 = button.dataset.value;
-        if (parent.id === 'q2') answers.q2 = button.dataset.value;
-        if (parent.id === 'q3') answers.q3 = button.dataset.value;
+        if(parent.id === 'q1') answers.q1 = button.dataset.value;
+        if(parent.id === 'q2') answers.q2 = button.dataset.value;
+        if(parent.id === 'q3') answers.q3 = button.dataset.value;
 
         parent.style.display = 'none';
-        if (parent.nextElementSibling && parent.nextElementSibling.classList.contains('question-section')) {
+        if(parent.nextElementSibling && parent.nextElementSibling.classList.contains('question-section')) {
           parent.nextElementSibling.style.display = 'block';
         } else {
           showResults();
         }
       });
     });
+
+    const adviceData = {
+      "texture": {text: "Uneven skin, rough patches, or lack of radiance.", img: "https://via.placeholder.com/150?text=Texture+Dullness"},
+      "wrinkles": {text: "Fine lines and wrinkles due to aging or sun damage.", img: "https://via.placeholder.com/150?text=Wrinkles"},
+      "active-acne": {text: "Current breakouts with red pimples or cysts.", img: "https://via.placeholder.com/150?text=Active+Acne"},
+      "prevent-acne": {text: "Preventing future acne is your priority.", img: "https://via.placeholder.com/150?text=Prevent+Acne"},
+      "dry": {text: "Skin feels tight, flaky, and dehydrated.", img: "https://via.placeholder.com/150?text=Dry+Skin"},
+      "dark-spots": {text: "Hyperpigmentation or sun spots.", img: "https://via.placeholder.com/150?text=Dark+Spots"},
+      "dark-circles": {text: "Puffiness or dark circles under the eyes.", img: "https://via.placeholder.com/150?text=Dark+Circles"},
+      "post-acne": {text: "Marks left from previous acne.", img: "https://via.placeholder.com/150?text=Post+Acne"},
+      "general": {text: "General skincare, maintaining healthy skin.", img: "https://via.placeholder.com/150?text=General+Care"}
+    };
+
+    function showAdvice(type) {
+      const popup = document.getElementById('advice-popup');
+      const textDiv = document.getElementById('advice-text');
+      const imagesDiv = document.getElementById('advice-images');
+
+      if(type === 'all') {
+        let html = "<h3>Skin Concerns Explained</h3>";
+        let imagesHtml = "";
+        for(const key in adviceData) {
+          html += `<p><strong>${key.replace(/-/g," ").toUpperCase()}:</strong> ${adviceData[key].text}</p>`;
+          imagesHtml += `<img src="${adviceData[key].img}" alt="${key}">`;
+        }
+        textDiv.innerHTML = html;
+        imagesDiv.innerHTML = imagesHtml;
+      } else {
+        textDiv.innerText = adviceData[type].text;
+        imagesDiv.innerHTML = `<img src="${adviceData[type].img}" alt="${type}">`;
+      }
+
+      popup.style.display = 'block';
+    }
+
+    function closeAdvice() {
+      document.getElementById('advice-popup').style.display = 'none';
+    }
 
     function showResults() {
       results.innerHTML = '<h2>Your Personalized Skincare Recommendations</h2>';
@@ -250,7 +285,6 @@
           "combination": [{name:"Blemish Spot Treatment", img:"https://via.placeholder.com/150", link:"#"}],
           "normal": [{name:"Acne Relief Gel", img:"https://via.placeholder.com/150", link:"#"}]
         }
-        // Add more mapping for other concerns
       };
 
       const concern = answers.q1;
@@ -270,48 +304,18 @@
         results.appendChild(card);
       });
 
-      const restartBtn = document.createElement('button');
-      restartBtn.classList.add('restart-btn');
-      restartBtn.innerText = "Restart Quiz";
-      restartBtn.onclick = restartQuiz;
-      results.appendChild(restartBtn);
+      if(recommended.length === 0) {
+        results.innerHTML += "<p>No exact matches yet, but explore our curated collection!</p>";
+      }
 
+      results.innerHTML += '<button class="restart-btn" onclick="restartQuiz()">Restart Quiz</button>';
       results.style.display = 'block';
-      console.log('User Answers:', answers);
     }
 
     function restartQuiz() {
-      results.style.display = 'none';
-      answers.q1 = answers.q2 = answers.q3 = null;
-      questionSections.forEach(q => q.style.display = 'none');
-      document.getElementById('q1').style.display = 'block';
-    }
-
-    // Advice popups
-    const advicePopup = document.getElementById('advice-popup');
-    const adviceText = document.getElementById('advice-text');
-    const adviceImg = document.getElementById('advice-img');
-
-    const adviceData = {
-      "texture": {text: "Uneven skin, rough patches, or lack of radiance.", img: "https://via.placeholder.com/300?text=Texture+Dullness"},
-      "wrinkles": {text: "Fine lines and wrinkles due to aging or sun damage.", img: "https://via.placeholder.com/300?text=Wrinkles"},
-      "active-acne": {text: "Current breakouts with red pimples or cysts.", img: "https://via.placeholder.com/300?text=Active+Acne"},
-      "prevent-acne": {text: "Preventing future acne is your priority.", img: "https://via.placeholder.com/300?text=Prevent+Acne"},
-      "dry": {text: "Skin feels tight, flaky, and dehydrated.", img: "https://via.placeholder.com/300?text=Dry+Skin"},
-      "dark-spots": {text: "Hyperpigmentation or sun spots.", img: "https://via.placeholder.com/300?text=Dark+Spots"},
-      "dark-circles": {text: "Puffiness or dark circles under the eyes.", img: "https://via.placeholder.com/300?text=Dark+Circles"},
-      "post-acne": {text: "Marks left from previous acne.", img: "https://via.placeholder.com/300?text=Post+Acne"},
-      "general": {text: "General skincare, maintaining healthy skin.", img: "https://via.placeholder.com/300?text=General+Care"}
-    };
-
-    function showAdvice(type) {
-      adviceText.innerText = adviceData[type].text;
-      adviceImg.src = adviceData[type].img;
-      advicePopup.style.display = 'block';
-    }
-
-    function closeAdvice() {
-      advicePopup.style.display = 'none';
+      answers.q1 = answers.q2 = answers.q3 = undefined;
+      questionSections.forEach(q => q.style.display='block');
+      results.style.display='none';
     }
   </script>
 
