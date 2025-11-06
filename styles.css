@@ -1,3 +1,4 @@
+/* ------------------- Body & General ------------------- */
 body {
   margin: 0;
   font-family: 'Helvetica Neue', sans-serif;
@@ -5,7 +6,7 @@ body {
   color: #333;
 }
 
-/* Navigation */
+/* ------------------- Navigation ------------------- */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -38,7 +39,7 @@ body {
   color: #c59d5f;
 }
 
-/* Hero */
+/* ------------------- Hero ------------------- */
 .hero {
   height: 80vh;
   background: url('https://images.unsplash.com/photo-1583337130417-3346a1ee0f3f') center/cover no-repeat;
@@ -82,6 +83,7 @@ body {
   background: #b5894a;
 }
 
+/* ------------------- Quiz ------------------- */
 .quiz-container {
   max-width: 600px;
   margin: 50px auto;
@@ -122,11 +124,67 @@ button:hover {
   border-radius: 10px;
 }
 
-/* Footer */
+/* ------------------- Footer ------------------- */
 footer {
   text-align: center;
   padding: 1rem;
   background: white;
   font-size: 0.9rem;
   color: #555;
+}
+
+/* ------------------- Advice Popup for Question 1 ------------------- */
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 25px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 80%;
+  overflow-y: auto;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  z-index: 2000;
+}
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.popup-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+.advice-card {
+  background: #f9f7f4;
+  padding: 10px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+.advice-card img {
+  max-width: 100px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+}
+.advice-card h4 {
+  font-size: 1rem;
+  margin: 5px 0;
+  color: #c59d5f;
+}
+.advice-card p {
+  font-size: 0.85rem;
+  color: #333;
 }
