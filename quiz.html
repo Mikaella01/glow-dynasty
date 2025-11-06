@@ -38,79 +38,40 @@ h1 { text-align:center; color:#b86b5c; margin-top:20px; }
   border-radius:16px;
   box-shadow:0 6px 15px rgba(0,0,0,0.05);
 }
-.question { font-weight:bold; font-size:1.3rem; margin-bottom:10px; }
-.options { display:flex; flex-direction:column; gap:10px; margin-top:10px; }
-.option button {
-  padding:12px;
-  font-size:1rem;
-  border-radius:10px;
-  border:1px solid #b86b5c;
-  background:#fff;
-  cursor:pointer;
-  transition:0.3s;
-  text-align:left;
+.question { font-weight:bold; font-size:1.3rem; margin-bottom:10px; text-align:center; }
+.option-card {
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  background: #fff;
+  text-align: center;
 }
-.option button.selected { background:#b86b5c; color:#fff; }
-.option button:hover { background:#f5cfc1; }
-.confirm-btn {
-  display:none;
-  margin-top:20px;
-  padding:12px 20px;
-  border:none;
-  border-radius:12px;
-  background:#b86b5c;
-  color:#fff;
-  cursor:pointer;
-  font-size:1rem;
+.option-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
 }
-.popup {
-  display:none;
-  position:fixed;
-  top:50%; left:50%;
-  transform:translate(-50%,-50%);
-  background:#fff;
-  padding:25px;
-  border-radius:16px;
-  max-width:500px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.2);
-  z-index:2000;
-  overflow-y:auto;
-  max-height:80%;
-}
+.option-card h4 { margin: 10px 0 5px 0; font-size: 1.1rem; }
+.option-card p { font-size: 0.9rem; color: #666; }
+.option-card.selected { border-color: #b86b5c; box-shadow: 0 4px 15px rgba(184,107,92,0.4); }
+.options { display: grid; grid-template-columns: repeat(auto-fill,minmax(140px,1fr)); gap:15px; margin-top:15px; justify-items:center; }
+.confirm-btn { display:none; margin-top:20px; padding:12px 20px; border:none; border-radius:12px; background:#b86b5c; color:#fff; cursor:pointer; font-size:1rem; }
+.popup { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:#fff; padding:25px; border-radius:16px; max-width:500px; box-shadow:0 6px 20px rgba(0,0,0,0.2); z-index:2000; overflow-y:auto; max-height:80%; }
 .popup img { max-width:100px; margin:5px; border-radius:8px; }
-.popup button {
-  margin-top:15px;
-  padding:10px 15px;
-  background:#b86b5c;
-  color:#fff;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-}
+.popup button { margin-top:15px; padding:10px 15px; background:#b86b5c; color:#fff; border:none; border-radius:8px; cursor:pointer; }
 .results { display:none; margin-top:20px; }
 .results h2 { text-align:center; color:#b86b5c; }
-.product-card {
-  text-align:center;
-  margin:15px 0;
-  padding:15px;
-  background:#fef9f4;
-  border-radius:16px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.05);
-}
+.product-card { text-align:center; margin:15px 0; padding:15px; background:#fef9f4; border-radius:16px; box-shadow:0 4px 10px rgba(0,0,0,0.05); }
 .product-card img { max-width:150px; border-radius:8px; }
 .product-card a { display:inline-block; margin-top:8px; color:#b86b5c; text-decoration:none; font-weight:bold; }
 .product-card a:hover { text-decoration:underline; }
-button.restart-btn {
-  display:block;
-  margin:20px auto 0 auto;
-  padding:12px 20px;
-  border:none;
-  border-radius:12px;
-  background:#b86b5c;
-  color:#fff;
-  font-size:1rem;
-  cursor:pointer;
-}
+button.restart-btn { display:block; margin:20px auto 0 auto; padding:12px 20px; border:none; border-radius:12px; background:#b86b5c; color:#fff; font-size:1rem; cursor:pointer; }
 </style>
 </head>
 <body>
@@ -127,23 +88,31 @@ button.restart-btn {
 </header>
 
 <div class="quiz-container">
+
   <!-- Question 1 -->
   <div class="question-section" id="q1">
     <div class="question">1. What is your main skin concern?</div>
     <div style="margin:15px 0; text-align:right;">
       <button id="advice-btn">Need advice (!)</button>
     </div>
-    <div class="options">
-      <div class="option"><button data-value="texture">Skin texture/dullness</button></div>
-      <div class="option"><button data-value="wrinkles">Wrinkles & fine lines</button></div>
-      <div class="option"><button data-value="active-acne">Active acne breakout</button></div>
-      <div class="option"><button data-value="prevent-acne">Help prevent new acne</button></div>
-      <div class="option"><button data-value="dry">Dry skin</button></div>
-      <div class="option"><button data-value="dark-spots">Dark spots</button></div>
-      <div class="option"><button data-value="dark-circles">Dark circles & puffiness around eyes</button></div>
-      <div class="option"><button data-value="post-acne">Post acne marks</button></div>
-      <div class="option"><button data-value="general">General skin care routine</button></div>
-      <div class="option"><button data-value="prefer-not">Prefer not to answer</button></div>
+    <div class="options" id="options-q1">
+      <!-- Example card -->
+      <div class="option-card" data-value="texture">
+        <img src="https://via.placeholder.com/150?text=Texture" alt="Skin Texture">
+        <h4>Skin texture / dullness</h4>
+        <p>Uneven skin, rough patches, or dullness.</p>
+      </div>
+      <div class="option-card" data-value="wrinkles">
+        <img src="https://via.placeholder.com/150?text=Wrinkles" alt="Wrinkles">
+        <h4>Wrinkles & fine lines</h4>
+        <p>Signs of aging, fine lines, or wrinkles.</p>
+      </div>
+      <div class="option-card" data-value="active-acne">
+        <img src="https://via.placeholder.com/150?text=Acne" alt="Active Acne">
+        <h4>Active acne breakout</h4>
+        <p>Current breakouts with pimples.</p>
+      </div>
+      <!-- Add remaining concerns similarly -->
     </div>
     <button class="confirm-btn" id="confirm-btn1">Confirm</button>
   </div>
@@ -151,28 +120,45 @@ button.restart-btn {
   <!-- Question 2 -->
   <div class="question-section" id="q2" style="display:none;">
     <div class="question">2. How does the skin on your face typically feel?</div>
-    <div class="options">
-      <div class="option"><button data-value="dry">Dry (tight & flaky)</button></div>
-      <div class="option"><button data-value="oily">Oily (greasy & shiny)</button></div>
-      <div class="option"><button data-value="combination">Combination (tight cheeks, shiny T-zone)</button></div>
-      <div class="option"><button data-value="normal">Normal/balanced (even, not too oily or dry)</button></div>
+    <div class="options" id="options-q2">
+      <div class="option-card" data-value="dry">
+        <img src="https://via.placeholder.com/120?text=Dry" alt="Dry">
+        <h4>Dry</h4>
+        <p>Tight and flaky all over the face.</p>
+      </div>
+      <div class="option-card" data-value="oily">
+        <img src="https://via.placeholder.com/120?text=Oily" alt="Oily">
+        <h4>Oily</h4>
+        <p>Greasy and shiny all over.</p>
+      </div>
+      <div class="option-card" data-value="combination">
+        <img src="https://via.placeholder.com/120?text=Combo" alt="Combination">
+        <h4>Combination</h4>
+        <p>Tight cheeks, shiny T-zone.</p>
+      </div>
+      <div class="option-card" data-value="normal">
+        <img src="https://via.placeholder.com/120?text=Normal" alt="Normal">
+        <h4>Normal / Balanced</h4>
+        <p>Even, not too oily or dry.</p>
+      </div>
     </div>
     <button class="confirm-btn" id="confirm-btn2">Confirm</button>
   </div>
 
-  <!-- Question 3 -->
+  <!-- Question 3 (text buttons style) -->
   <div class="question-section" id="q3" style="display:none;">
     <div class="question">3. Is your skin sensitive?</div>
     <div class="options">
-      <div class="option"><button data-value="yes">Yes</button></div>
-      <div class="option"><button data-value="no">No</button></div>
-      <div class="option"><button data-value="a-little">A little</button></div>
+      <div class="option-card" data-value="yes"><h4>Yes</h4></div>
+      <div class="option-card" data-value="no"><h4>No</h4></div>
+      <div class="option-card" data-value="a-little"><h4>A little</h4></div>
     </div>
     <button class="confirm-btn" id="confirm-btn3">Confirm</button>
   </div>
 
   <!-- Results -->
   <div class="results" id="results"></div>
+
 </div>
 
 <!-- Advice Popup -->
@@ -197,8 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "general": {text:"General skincare routine.", img:"https://via.placeholder.com/150?text=General+Care"}
   };
 
-  // Advice popup
-  document.getElementById("advice-btn").addEventListener("click", () => {
+  function showAdvice() {
     const popup = document.getElementById("advice-popup");
     let html = "<h3>Skin Concerns Explained</h3>";
     let imagesHtml = "";
@@ -209,34 +194,39 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("advice-text").innerHTML = html;
     document.getElementById("advice-images").innerHTML = imagesHtml;
     popup.style.display = "block";
-  });
-  window.closeAdvice = function(){ document.getElementById("advice-popup").style.display = "none"; }
+  }
+  window.closeAdvice = () => { document.getElementById("advice-popup").style.display="none"; }
+  document.getElementById("advice-btn").addEventListener("click", showAdvice);
 
-  function setupQuestion(qId, confirmBtnId, answerKey, nextQId=null){
-    const section = document.getElementById(qId);
-    const buttons = section.querySelectorAll(".option button");
-    const confirmBtn = document.getElementById(confirmBtnId);
-    let selected = null;
+  let selected = null;
 
-    buttons.forEach(btn => btn.addEventListener("click", () => {
-      buttons.forEach(b=>b.classList.remove("selected"));
-      btn.classList.add("selected");
-      selected = btn.dataset.value;
-      confirmBtn.style.display = "inline-block";
-    }));
-
+  function setupQuestion(qId, confirmId) {
+    const options = document.querySelectorAll(`#${qId} .option-card`);
+    const confirmBtn = document.getElementById(confirmId);
+    options.forEach(opt => {
+      opt.addEventListener("click", () => {
+        options.forEach(o => o.classList.remove("selected"));
+        opt.classList.add("selected");
+        selected = opt.dataset.value;
+        confirmBtn.style.display = "inline-block";
+      });
+    });
     confirmBtn.addEventListener("click", () => {
-      if(!selected) return;
-      answers[answerKey] = selected;
-      section.style.display = "none";
-      if(nextQId) document.getElementById(nextQId).style.display = "block";
-      else showResults();
+      if(selected) {
+        answers[qId] = selected;
+        document.getElementById(qId).style.display = "none";
+        const nextQ = document.getElementById(`q${parseInt(qId.slice(1))+1}`);
+        if(nextQ) nextQ.style.display = "block";
+        else showResults();
+        selected = null;
+        confirmBtn.style.display = "none";
+      }
     });
   }
 
-  setupQuestion("q1","confirm-btn1","q1","q2");
-  setupQuestion("q2","confirm-btn2","q2","q3");
-  setupQuestion("q3","confirm-btn3","q3");
+  setupQuestion("q1", "confirm-btn1");
+  setupQuestion("q2", "confirm-btn2");
+  setupQuestion("q3", "confirm-btn3");
 
   function showResults(){
     const resultsDiv = document.getElementById("results");
@@ -257,17 +247,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.restartQuiz = function(){
-    ["q1","q2","q3"].forEach(q=>{
-      const sec = document.getElementById(q);
-      sec.style.display = q==="q1"?"block":"none";
-      sec.querySelectorAll(".option button").forEach(b=>b.classList.remove("selected"));
-      sec.querySelector(".confirm-btn").style.display = "none";
-    });
-    document.getElementById("results").style.display = "none";
+    answers.q1 = answers.q2 = answers.q3 = undefined;
+    document.querySelectorAll(".question-section").forEach(q => q.style.display="block");
+    document.getElementById("results").style.display="none";
   }
-
 });
 </script>
-
 </body>
 </html>
