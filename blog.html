@@ -1,63 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Glow Dynasty - Glow Journal</title>
-  <link href="style.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glow Dynasty - Glow Journal</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Montserrat', sans-serif;}
+body { line-height:1.6; color:#333; background:#fdfaf6; }
+nav { display:flex; justify-content:space-between; align-items:center; padding:15px 50px; background:white; box-shadow:0 2px 5px rgba(0,0,0,0.1); position:sticky; top:0; z-index:100; }
+nav .logo { font-size:24px; font-weight:700; color:#b86b5c; text-decoration:none; }
+nav ul { list-style:none; display:flex; gap:25px; }
+nav ul li a { text-decoration:none; color:#333; font-weight:500; transition:0.3s; }
+nav ul li a:hover { color:#b86b5c; }
+h1,h2 { text-align:center; color:#b86b5c; margin:40px 0; }
+.blog-posts { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:25px; padding:0 50px 50px 50px; }
+.post-card { background:white; border-radius:12px; overflow:hidden; box-shadow:0 6px 15px rgba(0,0,0,0.05); transition:0.3s; cursor:pointer; }
+.post-card img { width:100%; height:200px; object-fit:cover; }
+.post-card h3 { margin:15px; color:#b86b5c; }
+.post-card p { margin:0 15px 15px 15px; color:#555; font-size:0.95rem; }
+.post-card a { display:inline-block; margin:0 15px 15px 15px; text-decoration:none; color:#fff; background:#b86b5c; padding:8px 15px; border-radius:8px; transition:0.3s; }
+.post-card a:hover { background:#933; }
+footer { background:#f8f8f8; padding:40px 50px; display:flex; justify-content:space-between; flex-wrap:wrap; }
+footer .footer-col { margin-bottom:20px; }
+footer h4 { margin-bottom:15px; color:#333; }
+footer ul { list-style:none; }
+footer ul li { margin-bottom:10px; }
+footer ul li a { text-decoration:none; color:#555; transition:0.3s; }
+footer ul li a:hover { color:#b86b5c; }
+footer .social { display:flex; gap:15px; }
+footer .social a { text-decoration:none; color:#555; font-size:20px; transition:0.3s; }
+footer .social a:hover { color:#b86b5c; }
+@media(max-width:768px){ nav ul { flex-direction:column; gap:15px; } nav { flex-direction:column; align-items:flex-start; } }
+@media(max-width:576px){ .blog-posts { padding:0 20px 20px 20px; } }
+</style>
 </head>
 <body>
 
-  <div class="announcement">Free shipping on orders over $50!</div>
+<nav>
+  <a href="index.html" class="logo">Glow Dynasty</a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="blog.html">Glow Journal</a></li>
+    <li><a href="quiz.html">Skin Quiz</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
 
-  <nav>
-    <a href="index.html" class="logo">Glow Dynasty</a>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="shop.html">Shop</a></li>
-      <li><a href="blog.html">Glow Journal</a></li>
-      <li><a href="quiz.html">Skin Quiz</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
+<h1>Glow Journal</h1>
+<div class="blog-posts">
+  <div class="post-card">
+    <img src="https://picsum.photos/300/200?random=10" alt="Post 1">
+    <h3>5 Steps to Radiant Skin</h3>
+    <p>Learn how to achieve glowing skin with simple daily routines.</p>
+    <a href="#">Read More</a>
+  </div>
+  <div class="post-card">
+    <img src="https://picsum.photos/300/200?random=11" alt="Post 2">
+    <h3>Top K-Beauty Trends</h3>
+    <p>Discover the latest trends in Korean skincare and beauty.</p>
+    <a href="#">Read More</a>
+  </div>
+  <div class="post-card">
+    <img src="https://picsum.photos/300/200?random=12" alt="Post 3">
+    <h3>Choosing Products for Your Skin Type</h3>
+    <p>How to select the best skincare products based on your skin concerns.</p>
+    <a href="#">Read More</a>
+  </div>
+  <div class="post-card">
+    <img src="https://picsum.photos/300/200?random=13" alt="Post 4">
+    <h3>Natural Ingredients to Try</h3>
+    <p>Explore skincare ingredients that naturally boost your glow.</p>
+    <a href="#">Read More</a>
+  </div>
+</div>
 
-  <section>
-    <h2>Glow Journal</h2>
-    <p style="text-align:center; font-size:18px;">Welcome to our blog! Here you'll find tips, skincare routines, product comparisons, and more to help you achieve radiant skin.</p>
-    <div class="products">
-      <div class="product-card">
-        <img src="https://via.placeholder.com/200x200?text=Blog+1" alt="Blog 1">
-        <h4>5 Steps to Perfect Skincare</h4>
-      </div>
-      <div class="product-card">
-        <img src="https://via.placeholder.com/200x200?text=Blog+2" alt="Blog 2">
-        <h4>Top K-Beauty Products</h4>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-col">
-      <h4>About</h4>
-      <ul>
-        <li><a href="#">Our Story</a></li>
-        <li><a href="#">Sustainability</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Support</h4>
-      <ul>
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Follow Us</h4>
-      <div class="social">
-        <a href="#">Instagram</a>
-        <a href="#">Facebook</a>
-      </div>
-    </div>
-  </footer>
+<footer>
+<div class="footer-col">
+  <h4>About</h4>
+  <ul>
+    <li><a href="#">Our Story</a></li>
+    <li><a href="#">Sustainability</a></li>
+    <li><a href="#">Careers</a></li>
+  </ul>
+</div>
+<div class="footer-col">
+  <h4>Support</h4>
+  <ul>
+    <li><a href="#">Contact Us</a></li>
+    <li><a href="#">Shipping</a></li>
+    <li><a href="#">Returns</a></li>
+  </ul>
+</div>
+<div class="footer-col">
+  <h4>Follow Us</h4>
+  <div class="social">
+    <a href="#">Instagram</a>
+    <a href="#">Facebook</a>
+    <a href="#">Pinterest</a>
+  </div>
+</div>
+</footer>
 
 </body>
 </html>
