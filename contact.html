@@ -1,1 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Glow Dynasty</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #faf9f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 0 10px;
+    }
+
+    header h1 {
+      color: #e89cb9;
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+
+    .contact-container {
+      max-width: 700px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .contact-container h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .contact-container p {
+      text-align: center;
+      color: #777;
+      margin-bottom: 30px;
+      font-size: 0.95rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    input, textarea, select {
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 120px;
+    }
+
+    button {
+      align-self: center;
+      background-color: #f5a6b4;
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background-color: #f28a9c;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    .success-message {
+      text-align: center;
+      color: #4CAF50;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Glow Dynasty</h1>
+    <p>We’re here to help you glow — contact us anytime ✨</p>
+  </header>
+
+  <section class="contact-container">
+    <h2>Contact Us</h2>
+    <p>Got a question, feedback, or collaboration idea? Send us a message below!</p>
+
+    <form id="contactForm">
+      <div>
+        <label for="name">Full Name *</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div>
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div>
+        <label for="subject">Subject *</label>
+        <select id="subject" name="subject" required>
+          <option value="">Select...</option>
+          <option value="product">Product Question</option>
+          <option value="order">Order Inquiry</option>
+          <option value="collaboration">Collaboration</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="message">Your Message *</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div id="successMessage" class="success-message hidden">Thank you for your message! We’ll get back to you soon 💌</div>
+  </section>
+
+  <footer>
+    <p>© 2025 Glow Dynasty | Your beauty, simplified.</p>
+  </footer>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      // you can later connect this to an email service like EmailJS or Formspree
+      document.getElementById("successMessage").classList.remove("hidden");
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
 
