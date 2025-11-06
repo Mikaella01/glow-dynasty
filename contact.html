@@ -3,165 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us | Glow Dynasty</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #faf9f8;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      text-align: center;
-      padding: 40px 0 10px;
-    }
-
-    header h1 {
-      color: #e89cb9;
-      font-size: 2rem;
-      letter-spacing: 1px;
-    }
-
-    .contact-container {
-      max-width: 700px;
-      margin: 50px auto;
-      background: #fff;
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    }
-
-    .contact-container h2 {
-      text-align: center;
-      color: #333;
-      margin-bottom: 10px;
-    }
-
-    .contact-container p {
-      text-align: center;
-      color: #777;
-      margin-bottom: 30px;
-      font-size: 0.95rem;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    label {
-      font-weight: 600;
-      margin-bottom: 5px;
-    }
-
-    input, textarea, select {
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    textarea {
-      resize: vertical;
-      height: 120px;
-    }
-
-    button {
-      align-self: center;
-      background-color: #f5a6b4;
-      color: #fff;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-      font-size: 1rem;
-    }
-
-    button:hover {
-      background-color: #f28a9c;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.85rem;
-      color: #888;
-    }
-
-    .success-message {
-      text-align: center;
-      color: #4CAF50;
-      font-weight: bold;
-      margin-top: 15px;
-    }
-  </style>
+  <title>Glow Dynasty - Contact</title>
+  <link href="style.css" rel="stylesheet">
 </head>
-
 <body>
 
-  <header>
-    <h1>Glow Dynasty</h1>
-    <p>We’re here to help you glow — contact us anytime ✨</p>
-  </header>
+  <div class="announcement">Free shipping on orders over $50!</div>
 
-  <section class="contact-container">
+  <nav>
+    <a href="index.html" class="logo">Glow Dynasty</a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="blog.html">Glow Journal</a></li>
+      <li><a href="quiz.html">Skin Quiz</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section>
     <h2>Contact Us</h2>
-    <p>Got a question, feedback, or collaboration idea? Send us a message below!</p>
-
-    <form id="contactForm">
-      <div>
-        <label for="name">Full Name *</label>
-        <input type="text" id="name" name="name" required>
-      </div>
-
-      <div>
-        <label for="email">Email Address *</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-
-      <div>
-        <label for="subject">Subject *</label>
-        <select id="subject" name="subject" required>
-          <option value="">Select...</option>
-          <option value="product">Product Question</option>
-          <option value="order">Order Inquiry</option>
-          <option value="collaboration">Collaboration</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="message">Your Message *</label>
-        <textarea id="message" name="message" required></textarea>
-      </div>
-
-      <button type="submit">Send Message</button>
+    <p style="text-align:center;">Have questions? We’d love to hear from you!</p>
+    <form style="max-width:500px; margin:30px auto; display:flex; flex-direction:column; gap:15px;">
+      <input type="text" placeholder="Your Name" required style="padding:10px; border-radius:8px; border:1px solid #ccc;">
+      <input type="email" placeholder="Your Email" required style="padding:10px; border-radius:8px; border:1px solid #ccc;">
+      <textarea placeholder="Your Message" rows="5" required style="padding:10px; border-radius:8px; border:1px solid #ccc;"></textarea>
+      <button type="submit" style="padding:10px; border-radius:10px; background:#d81b60; color:white; border:none; cursor:pointer;">Send Message</button>
     </form>
-
-    <div id="successMessage" class="success-message hidden">Thank you for your message! We’ll get back to you soon 💌</div>
   </section>
 
   <footer>
-    <p>© 2025 Glow Dynasty | Your beauty, simplified.</p>
+    <div class="footer-col">
+      <h4>About</h4>
+      <ul>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">Sustainability</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <div class="social">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
   </footer>
-
-  <script>
-    document.getElementById("contactForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      // you can later connect this to an email service like EmailJS or Formspree
-      document.getElementById("successMessage").classList.remove("hidden");
-      this.reset();
-    });
-  </script>
 
 </body>
 </html>
-
