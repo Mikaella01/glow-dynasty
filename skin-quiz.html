@@ -44,6 +44,56 @@
     </form>
   </section>
 
+  <section id="skin-quiz" class="quiz-container">
+  <h2>Find Your Perfect Skincare Routine</h2>
+  <p>Take this quick quiz to discover your skin type and the best products for you!</p>
+
+  <form id="quizForm">
+    <div class="question">
+      <label>What is your gender?</label><br>
+      <input type="radio" name="gender" value="female" required> Female
+      <input type="radio" name="gender" value="male"> Male
+      <input type="radio" name="gender" value="other"> Other
+    </div>
+
+    <div class="question">
+      <label>What is your age group?</label><br>
+      <select name="age" required>
+        <option value="">Select...</option>
+        <option value="teens">Teens (13–19)</option>
+        <option value="20s">20s</option>
+        <option value="30s">30s</option>
+        <option value="40s">40s+</option>
+      </select>
+    </div>
+
+    <div class="question">
+      <label>How does your skin usually feel after washing?</label><br>
+      <input type="radio" name="wash" value="tight" required> Tight or dry<br>
+      <input type="radio" name="wash" value="normal"> Comfortable<br>
+      <input type="radio" name="wash" value="shiny"> Shiny or oily<br>
+    </div>
+
+    <div class="question">
+      <label>What are your main skin concerns?</label><br>
+      <input type="checkbox" name="concern" value="acne"> Acne<br>
+      <input type="checkbox" name="concern" value="dryness"> Dryness<br>
+      <input type="checkbox" name="concern" value="aging"> Aging<br>
+      <input type="checkbox" name="concern" value="sensitivity"> Sensitivity<br>
+      <input type="checkbox" name="concern" value="pigmentation"> Pigmentation<br>
+    </div>
+
+    <button type="submit">See My Results</button>
+  </form>
+
+  <div id="results" class="hidden">
+    <h3>Your Skin Type:</h3>
+    <p id="skinTypeResult"></p>
+    <h3>Recommended Products:</h3>
+    <div id="productSuggestions" class="product-grid"></div>
+  </div>
+</section>
+
   <footer>
     <p>© 2025 Glow Dynasty | All Rights Reserved</p>
   </footer>
