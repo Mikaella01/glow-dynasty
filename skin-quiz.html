@@ -3,99 +3,242 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Skin Quiz | Glow Dynasty</title>
+  <title>Find Your Skin Type | Glow Dynasty</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #faf9f8;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 0 10px;
+    }
+
+    header h1 {
+      color: #e89cb9;
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+
+    .quiz-container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .quiz-container h2 {
+      text-align: center;
+      color: #333;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .quiz-container p {
+      text-align: center;
+      color: #777;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      margin: 20px 0;
+    }
+
+    label {
+      font-weight: 600;
+    }
+
+    input[type="radio"], input[type="checkbox"] {
+      margin-right: 8px;
+    }
+
+    select {
+      padding: 8px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-top: 5px;
+    }
+
+    button {
+      display: block;
+      margin: 20px auto;
+      background-color: #f5a6b4;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background-color: #f28a9c;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #results {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    #results h3 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .product-grid img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .product p {
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.85rem;
+      color: #888;
+    }
+  </style>
 </head>
+
 <body>
+
   <header>
-    <nav class="navbar">
-      <h1 class="logo">Glow Dynasty</h1>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html">Shop by Origin</a></li>
-        <li><a href="glow-journal.html">Glow Journal</a></li>
-        <li><a href="skin-quiz.html" class="active">Skin Quiz</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </nav>
+    <h1>Glow Dynasty</h1>
+    <p>Discover your skin type and get personalized product picks ✨</p>
   </header>
 
-  <section class="page-section">
-    <h2>Find Your Perfect Ritual</h2>
-    <form class="quiz-form">
-      <label>What is your main skin concern?</label>
-      <select>
-        <option>Dryness</option>
-        <option>Acne / Breakouts</option>
-        <option>Sensitivity</option>
-        <option>Dark Spots</option>
-        <option>Fine Lines</option>
-      </select>
+  <section id="skin-quiz" class="quiz-container">
+    <h2>Find Your Perfect Skincare Routine</h2>
+    <p>Take this quick quiz to discover your skin type and the best products for you!</p>
 
-      <label>How would you describe your skin type?</label>
-      <select>
-        <option>Normal</option>
-        <option>Dry</option>
-        <option>Oily</option>
-        <option>Combination</option>
-      </select>
+    <form id="quizForm">
+      <div class="question">
+        <label>What is your gender?</label><br>
+        <input type="radio" name="gender" value="female" required> Female
+        <input type="radio" name="gender" value="male"> Male
+        <input type="radio" name="gender" value="other"> Other
+      </div>
 
-      <button type="submit" class="btn">Get Recommendations</button>
+      <div class="question">
+        <label>What is your age group?</label><br>
+        <select name="age" required>
+          <option value="">Select...</option>
+          <option value="teens">Teens (13–19)</option>
+          <option value="20s">20s</option>
+          <option value="30s">30s</option>
+          <option value="40s">40s+</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label>How does your skin usually feel after washing?</label><br>
+        <input type="radio" name="wash" value="tight" required> Tight or dry<br>
+        <input type="radio" name="wash" value="normal"> Comfortable<br>
+        <input type="radio" name="wash" value="shiny"> Shiny or oily<br>
+      </div>
+
+      <div class="question">
+        <label>What are your main skin concerns?</label><br>
+        <input type="checkbox" name="concern" value="acne"> Acne<br>
+        <input type="checkbox" name="concern" value="dryness"> Dryness<br>
+        <input type="checkbox" name="concern" value="aging"> Aging<br>
+        <input type="checkbox" name="concern" value="sensitivity"> Sensitivity<br>
+        <input type="checkbox" name="concern" value="pigmentation"> Pigmentation<br>
+      </div>
+
+      <button type="submit">See My Results</button>
     </form>
+
+    <div id="results" class="hidden">
+      <h3>Your Skin Type:</h3>
+      <p id="skinTypeResult"></p>
+      <h3>Recommended Products:</h3>
+      <div id="productSuggestions" class="product-grid"></div>
+    </div>
   </section>
 
-  <section id="skin-quiz" class="quiz-container">
-  <h2>Find Your Perfect Skincare Routine</h2>
-  <p>Take this quick quiz to discover your skin type and the best products for you!</p>
-
-  <form id="quizForm">
-    <div class="question">
-      <label>What is your gender?</label><br>
-      <input type="radio" name="gender" value="female" required> Female
-      <input type="radio" name="gender" value="male"> Male
-      <input type="radio" name="gender" value="other"> Other
-    </div>
-
-    <div class="question">
-      <label>What is your age group?</label><br>
-      <select name="age" required>
-        <option value="">Select...</option>
-        <option value="teens">Teens (13–19)</option>
-        <option value="20s">20s</option>
-        <option value="30s">30s</option>
-        <option value="40s">40s+</option>
-      </select>
-    </div>
-
-    <div class="question">
-      <label>How does your skin usually feel after washing?</label><br>
-      <input type="radio" name="wash" value="tight" required> Tight or dry<br>
-      <input type="radio" name="wash" value="normal"> Comfortable<br>
-      <input type="radio" name="wash" value="shiny"> Shiny or oily<br>
-    </div>
-
-    <div class="question">
-      <label>What are your main skin concerns?</label><br>
-      <input type="checkbox" name="concern" value="acne"> Acne<br>
-      <input type="checkbox" name="concern" value="dryness"> Dryness<br>
-      <input type="checkbox" name="concern" value="aging"> Aging<br>
-      <input type="checkbox" name="concern" value="sensitivity"> Sensitivity<br>
-      <input type="checkbox" name="concern" value="pigmentation"> Pigmentation<br>
-    </div>
-
-    <button type="submit">See My Results</button>
-  </form>
-
-  <div id="results" class="hidden">
-    <h3>Your Skin Type:</h3>
-    <p id="skinTypeResult"></p>
-    <h3>Recommended Products:</h3>
-    <div id="productSuggestions" class="product-grid"></div>
-  </div>
-</section>
-
   <footer>
-    <p>© 2025 Glow Dynasty | All Rights Reserved</p>
+    <p>© 2025 Glow Dynasty | Your beauty, simplified.</p>
   </footer>
+
+  <script>
+    document.getElementById("quizForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const gender = document.querySelector('input[name="gender"]:checked').value;
+      const age = document.querySelector('select[name="age"]').value;
+      const wash = document.querySelector('input[name="wash"]:checked').value;
+      const concerns = Array.from(document.querySelectorAll('input[name="concern"]:checked')).map(el => el.value);
+
+      let skinType = "";
+      if (wash === "tight") skinType = "Dry";
+      else if (wash === "shiny") skinType = "Oily";
+      else skinType = "Normal/Combination";
+
+      let products = [];
+
+      if (skinType === "Dry") {
+        products = [
+          { name: "Laneige Water Bank Moisture Cream", img: "https://via.placeholder.com/150" },
+          { name: "Etude House Soon Jung 2x Barrier Intensive Cream", img: "https://via.placeholder.com/150" }
+        ];
+      } else if (skinType === "Oily") {
+        products = [
+          { name: "Innisfree Green Tea Balancing Toner", img: "https://via.placeholder.com/150" },
+          { name: "Cosrx Oil-Free Ultra-Moisturizing Lotion", img: "https://via.placeholder.com/150" }
+        ];
+      } else {
+        products = [
+          { name: "Klairs Rich Moist Soothing Cream", img: "https://via.placeholder.com/150" },
+          { name: "Dr. Jart+ Cicapair Cream", img: "https://via.placeholder.com/150" }
+        ];
+      }
+
+      if (concerns.includes("acne")) {
+        products.push({ name: "Some By Mi AHA BHA PHA Miracle Toner", img: "https://via.placeholder.com/150" });
+      }
+      if (concerns.includes("aging")) {
+        products.push({ name: "Missha Time Revolution Night Repair Serum", img: "https://via.placeholder.com/150" });
+      }
+
+      document.getElementById("skinTypeResult").textContent = `${skinType} Skin`;
+      const productContainer = document.getElementById("productSuggestions");
+      productContainer.innerHTML = products.map(p => `
+        <div class="product">
+          <img src="${p.img}" alt="${p.name}">
+          <p>${p.name}</p>
+        </div>
+      `).join("");
+
+      document.getElementById("results").classList.remove("hidden");
+    });
+  </script>
+
 </body>
 </html>
