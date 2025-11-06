@@ -159,12 +159,11 @@
     <div class="question-section" id="q1">
       <div class="question">1. What is your main skin concern?</div>
 
-  <!-- Single advice button below -->
-      <div style="margin-top:15px; text-align:right;">
-        <button style="background:#b86b5c; color:#fff; border:none; padding:8px 12px; border-radius:8px; cursor:pointer;" onclick="showAdvice('all')">Need advice (!)</button>
+      <!-- Advice button below question -->
+      <div style="margin:15px 0; text-align:right;">
+        <button id="advice-btn" style="background:#b86b5c; color:#fff; border:none; padding:8px 12px; border-radius:8px; cursor:pointer;">Need advice (!)</button>
       </div>
-    </div>
-      
+
       <div class="options">
         <div class="option"><button data-value="texture">Skin texture/dullness</button></div>
         <div class="option"><button data-value="wrinkles">Wrinkles & fine lines</button></div>
@@ -177,7 +176,8 @@
         <div class="option"><button data-value="general">General skin care routine</button></div>
         <div class="option"><button data-value="prefer-not">Prefer not to answer</button></div>
       </div>
-    
+    </div>
+
     <!-- Question 2 -->
     <div class="question-section" id="q2" style="display:none;">
       <div class="question">2. How does the skin on your face typically feel?</div>
@@ -212,44 +212,29 @@
   </div>
 
   <script>
-    const answers = {};
-    const questionSections = document.querySelectorAll('.question-section');
-    const results = document.getElementById('results');
+    document.addEventListener("DOMContentLoaded", () => {
+      const answers = {};
+      const questionSections = document.querySelectorAll('.question-section');
+      const results = document.getElementById('results');
 
-    document.querySelectorAll('.question-section button').forEach(button => {
-      button.addEventListener('click', () => {
-        const parent = button.closest('.question-section');
-        if(parent.id === 'q1') answers.q1 = button.dataset.value;
-        if(parent.id === 'q2') answers.q2 = button.dataset.value;
-        if(parent.id === 'q3') answers.q3 = button.dataset.value;
+      // Advice popup
+      const adviceData = {
+        "texture": {text: "Uneven skin, rough patches, or lack of radiance.", img: "https://via.placeholder.com/150?text=Texture+Dullness"},
+        "wrinkles": {text: "Fine lines and wrinkles due to aging or sun damage.", img: "https://via.placeholder.com/150?text=Wrinkles"},
+        "active-acne": {text: "Current breakouts with red pimples or cysts.", img: "https://via.placeholder.com/150?text=Active+Acne"},
+        "prevent-acne": {text: "Preventing future acne is your priority.", img: "https://via.placeholder.com/150?text=Prevent+Acne"},
+        "dry": {text: "Skin feels tight, flaky, and dehydrated.", img: "https://via.placeholder.com/150?text=Dry+Skin"},
+        "dark-spots": {text: "Hyperpigmentation or sun spots.", img: "https://via.placeholder.com/150?text=Dark+Spots"},
+        "dark-circles": {text: "Puffiness or dark circles under the eyes.", img: "https://via.placeholder.com/150?text=Dark+Circles"},
+        "post-acne": {text: "Marks left from previous acne.", img: "https://via.placeholder.com/150?text=Post+Acne"},
+        "general": {text: "General skincare, maintaining healthy skin.", img: "https://via.placeholder.com/150?text=General+Care"}
+      };
 
-        parent.style.display = 'none';
-        if(parent.nextElementSibling && parent.nextElementSibling.classList.contains('question-section')) {
-          parent.nextElementSibling.style.display = 'block';
-        } else {
-          showResults();
-        }
-      });
-    });
+      function showAdvice() {
+        const popup = document.getElementById('advice-popup');
+        const textDiv = document.getElementById('advice-text');
+        const imagesDiv = document.getElementById('advice-images');
 
-    const adviceData = {
-      "texture": {text: "Uneven skin, rough patches, or lack of radiance.", img: "https://via.placeholder.com/150?text=Texture+Dullness"},
-      "wrinkles": {text: "Fine lines and wrinkles due to aging or sun damage.", img: "https://via.placeholder.com/150?text=Wrinkles"},
-      "active-acne": {text: "Current breakouts with red pimples or cysts.", img: "https://via.placeholder.com/150?text=Active+Acne"},
-      "prevent-acne": {text: "Preventing future acne is your priority.", img: "https://via.placeholder.com/150?text=Prevent+Acne"},
-      "dry": {text: "Skin feels tight, flaky, and dehydrated.", img: "https://via.placeholder.com/150?text=Dry+Skin"},
-      "dark-spots": {text: "Hyperpigmentation or sun spots.", img: "https://via.placeholder.com/150?text=Dark+Spots"},
-      "dark-circles": {text: "Puffiness or dark circles under the eyes.", img: "https://via.placeholder.com/150?text=Dark+Circles"},
-      "post-acne": {text: "Marks left from previous acne.", img: "https://via.placeholder.com/150?text=Post+Acne"},
-      "general": {text: "General skincare, maintaining healthy skin.", img: "https://via.placeholder.com/150?text=General+Care"}
-    };
-
-    function showAdvice(type) {
-      const popup = document.getElementById('advice-popup');
-      const textDiv = document.getElementById('advice-text');
-      const imagesDiv = document.getElementById('advice-images');
-
-      if(type === 'all') {
         let html = "<h3>Skin Concerns Explained</h3>";
         let imagesHtml = "";
         for(const key in adviceData) {
@@ -258,67 +243,58 @@
         }
         textDiv.innerHTML = html;
         imagesDiv.innerHTML = imagesHtml;
-      } else {
-        textDiv.innerText = adviceData[type].text;
-        imagesDiv.innerHTML = `<img src="${adviceData[type].img}" alt="${type}">`;
+
+        popup.style.display = 'block';
       }
 
-      popup.style.display = 'block';
-    }
+      document.getElementById('advice-btn').addEventListener('click', showAdvice);
 
-    function closeAdvice() {
-      document.getElementById('advice-popup').style.display = 'none';
-    }
+      window.closeAdvice = function() {
+        document.getElementById('advice-popup').style.display = 'none';
+      }
 
-    function showResults() {
-      results.innerHTML = '<h2>Your Personalized Skincare Recommendations</h2>';
+      // Button clicks for quiz
+      document.querySelectorAll('.question-section .option button').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const parent = btn.closest('.question-section');
+          if(parent.id === 'q1') answers.q1 = btn.dataset.value;
+          if(parent.id === 'q2') answers.q2 = btn.dataset.value;
+          if(parent.id === 'q3') answers.q3 = btn.dataset.value;
 
-      const productsDB = {
-        "texture": {
-          "dry": [{name:"Radiance Cream", img:"https://via.placeholder.com/150", link:"#"}],
-          "oily": [{name:"Brightening Gel", img:"https://via.placeholder.com/150", link:"#"}],
-          "combination": [{name:"Glow Balance Serum", img:"https://via.placeholder.com/150", link:"#"}],
-          "normal": [{name:"Hydrating Lotion", img:"https://via.placeholder.com/150", link:"#"}]
-        },
-        "active-acne": {
-          "dry": [{name:"Acne Care Moisturizer", img:"https://via.placeholder.com/150", link:"#"}],
-          "oily": [{name:"Oil Control Serum", img:"https://via.placeholder.com/150", link:"#"}],
-          "combination": [{name:"Blemish Spot Treatment", img:"https://via.placeholder.com/150", link:"#"}],
-          "normal": [{name:"Acne Relief Gel", img:"https://via.placeholder.com/150", link:"#"}]
-        }
-      };
-
-      const concern = answers.q1;
-      const type = answers.q2;
-      const sensitive = answers.q3;
-
-      let recommended = productsDB[concern] ? productsDB[concern][type] : [];
-
-      recommended.forEach(prod => {
-        const card = document.createElement('div');
-        card.classList.add('product-card');
-        card.innerHTML = `
-          <img src="${prod.img}" alt="${prod.name}">
-          <h3>${prod.name}</h3>
-          <a href="${prod.link}">Shop Now</a>
-        `;
-        results.appendChild(card);
+          parent.style.display = 'none';
+          const next = parent.nextElementSibling;
+          if(next && next.classList.contains('question-section')) next.style.display = 'block';
+          else showResults();
+        });
       });
 
-      if(recommended.length === 0) {
-        results.innerHTML += "<p>No exact matches yet, but explore our curated collection!</p>";
+      function showResults() {
+        results.innerHTML = '<h2>Your Personalized Skincare Recommendations</h2>';
+
+        // Dummy recommendations
+        const products = [
+          {name: "Radiance Cream", img:"https://via.placeholder.com/150", link:"#"},
+          {name: "Glow Balance Serum", img:"https://via.placeholder.com/150", link:"#"},
+          {name: "Blemish Spot Treatment", img:"https://via.placeholder.com/150", link:"#"}
+        ];
+
+        products.forEach(p => {
+          const card = document.createElement('div');
+          card.classList.add('product-card');
+          card.innerHTML = `<img src="${p.img}" alt="${p.name}"><h3>${p.name}</h3><a href="${p.link}">Shop Now</a>`;
+          results.appendChild(card);
+        });
+
+        results.innerHTML += '<button class="restart-btn" onclick="restartQuiz()">Restart Quiz</button>';
+        results.style.display = 'block';
       }
 
-      results.innerHTML += '<button class="restart-btn" onclick="restartQuiz()">Restart Quiz</button>';
-      results.style.display = 'block';
-    }
-
-    function restartQuiz() {
-      answers.q1 = answers.q2 = answers.q3 = undefined;
-      questionSections.forEach(q => q.style.display='block');
-      results.style.display='none';
-    }
+      window.restartQuiz = function() {
+        answers.q1 = answers.q2 = answers.q3 = undefined;
+        questionSections.forEach(q => q.style.display='block');
+        results.style.display='none';
+      }
+    });
   </script>
-
 </body>
 </html>
