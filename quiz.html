@@ -90,32 +90,65 @@ button.restart-btn { display:block; margin:20px auto 0 auto; padding:12px 20px; 
 <div class="quiz-container">
 
   <!-- Question 1 -->
-  <div class="question-section" id="q1">
-    <div class="question">1. What is your main skin concern?</div>
-    <div style="margin:15px 0; text-align:right;">
-      <button id="advice-btn">Need advice (!)</button>
-    </div>
-    <div class="options" id="options-q1">
-      <!-- Example card -->
-      <div class="option-card" data-value="texture">
-        <img src="https://via.placeholder.com/150?text=Texture" alt="Skin Texture">
-        <h4>Skin texture / dullness</h4>
-        <p>Uneven skin, rough patches, or dullness.</p>
-      </div>
-      <div class="option-card" data-value="wrinkles">
-        <img src="https://via.placeholder.com/150?text=Wrinkles" alt="Wrinkles">
-        <h4>Wrinkles & fine lines</h4>
-        <p>Signs of aging, fine lines, or wrinkles.</p>
-      </div>
-      <div class="option-card" data-value="active-acne">
-        <img src="https://via.placeholder.com/150?text=Acne" alt="Active Acne">
-        <h4>Active acne breakout</h4>
-        <p>Current breakouts with pimples.</p>
-      </div>
-      <!-- Add remaining concerns similarly -->
-    </div>
-    <button class="confirm-btn" id="confirm-btn1">Confirm</button>
+<div class="question-section" id="q1">
+  <div class="question">1. What is your main skin concern?</div>
+  <div style="margin:15px 0; text-align:right;">
+    <button id="advice-btn">Need advice (!)</button>
   </div>
+  <div class="options" id="options-q1">
+    <div class="option-card" data-value="texture">
+      <img src="https://via.placeholder.com/150?text=Texture" alt="Skin Texture">
+      <h4>Skin texture / dullness</h4>
+      <p>Uneven skin, rough patches, or dullness.</p>
+    </div>
+    <div class="option-card" data-value="wrinkles">
+      <img src="https://via.placeholder.com/150?text=Wrinkles" alt="Wrinkles">
+      <h4>Wrinkles & fine lines</h4>
+      <p>Signs of aging, fine lines, or wrinkles.</p>
+    </div>
+    <div class="option-card" data-value="active-acne">
+      <img src="https://via.placeholder.com/150?text=Acne" alt="Active Acne">
+      <h4>Active acne breakout</h4>
+      <p>Current pimples or breakouts.</p>
+    </div>
+    <div class="option-card" data-value="prevent-acne">
+      <img src="https://via.placeholder.com/150?text=Prevent+Acne" alt="Prevent Acne">
+      <h4>Help prevent new acne</h4>
+      <p>Focus on preventing future breakouts.</p>
+    </div>
+    <div class="option-card" data-value="dry">
+      <img src="https://via.placeholder.com/150?text=Dry+Skin" alt="Dry Skin">
+      <h4>Dry skin</h4>
+      <p>Tight, flaky, or dehydrated skin.</p>
+    </div>
+    <div class="option-card" data-value="dark-spots">
+      <img src="https://via.placeholder.com/150?text=Dark+Spots" alt="Dark Spots">
+      <h4>Dark spots</h4>
+      <p>Hyperpigmentation or sun spots.</p>
+    </div>
+    <div class="option-card" data-value="dark-circles">
+      <img src="https://via.placeholder.com/150?text=Dark+Circles" alt="Dark Circles">
+      <h4>Dark circles & puffiness around eyes</h4>
+      <p>Under-eye circles or puffiness.</p>
+    </div>
+    <div class="option-card" data-value="post-acne">
+      <img src="https://via.placeholder.com/150?text=Post+Acne" alt="Post Acne">
+      <h4>Post acne marks</h4>
+      <p>Scars or discoloration left from acne.</p>
+    </div>
+    <div class="option-card" data-value="general">
+      <img src="https://via.placeholder.com/150?text=General+Care" alt="General Care">
+      <h4>General skin care routine</h4>
+      <p>Looking for everyday skincare guidance.</p>
+    </div>
+    <div class="option-card" data-value="prefer-not">
+      <img src="https://via.placeholder.com/150?text=Prefer+Not" alt="Prefer Not">
+      <h4>Prefer not to answer</h4>
+      <p>No preference or not sure yet.</p>
+    </div>
+  </div>
+  <button class="confirm-btn" id="confirm-btn1">Confirm</button>
+</div>
 
   <!-- Question 2 -->
   <div class="question-section" id="q2" style="display:none;">
