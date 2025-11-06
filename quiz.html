@@ -79,11 +79,11 @@ button.restart-btn { display:block; margin:20px auto 0 auto; padding:12px 20px; 
 <header>
   <h1>Glow Dynasty</h1>
   <nav>
-    <a href="#">Home</a>
-    <a href="#">Shop</a>
-    <a href="#">Blog</a>
-    <a href="#">Contact</a>
-    <a href="#">Skin Quiz</a>
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="quiz.html">Skin Quiz</a>
   </nav>
 </header>
 
@@ -150,140 +150,60 @@ button.restart-btn { display:block; margin:20px auto 0 auto; padding:12px 20px; 
   <button class="confirm-btn" id="confirm-btn1">Confirm</button>
 </div>
 
-  <!-- Question 2 -->
-  <div class="question-section" id="q2" style="display:none;">
-    <div class="question">2. How does the skin on your face typically feel?</div>
-    <div class="options" id="options-q2">
-      <div class="option-card" data-value="dry">
-        <img src="https://via.placeholder.com/120?text=Dry" alt="Dry">
-        <h4>Dry</h4>
-        <p>Tight and flaky all over the face.</p>
-      </div>
-      <div class="option-card" data-value="oily">
-        <img src="https://via.placeholder.com/120?text=Oily" alt="Oily">
-        <h4>Oily</h4>
-        <p>Greasy and shiny all over.</p>
-      </div>
-      <div class="option-card" data-value="combination">
-        <img src="https://via.placeholder.com/120?text=Combo" alt="Combination">
-        <h4>Combination</h4>
-        <p>Tight cheeks, shiny T-zone.</p>
-      </div>
-      <div class="option-card" data-value="normal">
-        <img src="https://via.placeholder.com/120?text=Normal" alt="Normal">
-        <h4>Normal / Balanced</h4>
-        <p>Even, not too oily or dry.</p>
-      </div>
+<!-- Question 2 -->
+<div class="question-section" id="q2" style="display:none;">
+  <div class="question">2. How does the skin on your face typically feel?</div>
+  <div class="options" id="options-q2">
+    <div class="option-card" data-value="dry">
+      <img src="https://via.placeholder.com/120?text=Dry" alt="Dry">
+      <h4>Dry</h4>
+      <p>Tight and flaky all over the face.</p>
     </div>
-    <button class="confirm-btn" id="confirm-btn2">Confirm</button>
-  </div>
-
-  <!-- Question 3 (text buttons style) -->
-  <div class="question-section" id="q3" style="display:none;">
-    <div class="question">3. Is your skin sensitive?</div>
-    <div class="options">
-      <div class="option-card" data-value="yes"><h4>Yes</h4></div>
-      <div class="option-card" data-value="no"><h4>No</h4></div>
-      <div class="option-card" data-value="a-little"><h4>A little</h4></div>
+    <div class="option-card" data-value="oily">
+      <img src="https://via.placeholder.com/120?text=Oily" alt="Oily">
+      <h4>Oily</h4>
+      <p>Greasy and shiny all over.</p>
     </div>
-    <button class="confirm-btn" id="confirm-btn3">Confirm</button>
+    <div class="option-card" data-value="combination">
+      <img src="https://via.placeholder.com/120?text=Combo" alt="Combination">
+      <h4>Combination</h4>
+      <p>Tight cheeks, shiny T-zone.</p>
+    </div>
+    <div class="option-card" data-value="normal">
+      <img src="https://via.placeholder.com/120?text=Normal" alt="Normal">
+      <h4>Normal / Balanced</h4>
+      <p>Even, not too oily or dry.</p>
+    </div>
   </div>
-
-  <!-- Results -->
-  <div class="results" id="results"></div>
-
+  <button class="confirm-btn" id="confirm-btn2">Confirm</button>
 </div>
 
-<!-- Advice Popup for Question 1 -->
+<!-- Question 3 -->
+<div class="question-section" id="q3" style="display:none;">
+  <div class="question">3. Is your skin sensitive?</div>
+  <div class="options">
+    <div class="option-card" data-value="yes"><h4>Yes</h4></div>
+    <div class="option-card" data-value="no"><h4>No</h4></div>
+    <div class="option-card" data-value="a-little"><h4>A little</h4></div>
+  </div>
+  <button class="confirm-btn" id="confirm-btn3">Confirm</button>
+</div>
+
+<!-- Results -->
+<div class="results" id="results"></div>
+
+<!-- Advice Popup -->
 <div class="popup" id="advice-popup">
   <div class="popup-header">
     <h3>Skin Concerns Explained</h3>
     <button onclick="closeAdvice()" class="close-btn">&times;</button>
   </div>
-  <div class="popup-grid">
-    <div class="advice-card">
-      <img src="https://via.placeholder.com/150?text=Texture" alt="Skin Texture">
-      <h4>Skin texture / dullness</h4>
-      <p>Uneven skin, rough patches, or dullness.</p>
-    </div>
-    <div class="advice-card">
-      <img src="https://via.placeholder.com/150?text=Wrinkles" alt="Wrinkles">
-      <h4>Wrinkles & fine lines</h4>
-      <p>Signs of aging, fine lines, or wrinkles.</p>
-    </div>
-    <div class="advice-card">
-      <img src="https://via.placeholder.com/150?text=Acne" alt="Active Acne">
-      <h4>Active acne breakout</h4>
-      <p>Current pimples or breakouts.</p>
-    </div>
-    <div class="advice-card">
-      <img src="https://via.placeholder.com/150?text=Prevent+Acne" alt="Prevent Acne">
-      <h4>Help prevent new acne</h4>
-      <p>Focus on preventing future breakouts.</p>
-    </div>
-    <div class="advice-card">
-      <img src="https://via.placeholder.com/150?text=Dry+Skin" alt="Dry Skin">
-      <h4>Dry skin</h4>
-      <p>Tight, flaky, or dehydrated skin.</p>
-    </div>
-    <div class="advice-card">
-      <img src="https://via.placeholder.com/150?text=Dark+Spots" alt="Dark Spots">
-      <h4>Dark spots</h4>
-      <p>Hyperpigmentation or sun spots.</p>
-    </div>
-    <div class="advice-card">
-      <img src="https://via.placeholder.com/150?text=Dark+Circles" alt="Dark Circles">
-      <h4>Dark circles & puffiness</h4>
-      <p>Under-eye circles or puffiness.</p>
-    </div>
-    <div class="advice-card">
-      <img src="https://via.placeholder.com/150?text=Post+Acne" alt="Post Acne">
-      <h4>Post acne marks</h4>
-      <p>Scars or discoloration left from acne.</p>
-    </div>
-    <div class="advice-card">
-      <img src="https://via.placeholder.com/150?text=General+Care" alt="General Care">
-      <h4>General skin care routine</h4>
-      <p>Looking for everyday skincare guidance.</p>
-    </div>
-    <div class="advice-card">
-      <img src="https://via.placeholder.com/150?text=Prefer+Not" alt="Prefer Not">
-      <h4>Prefer not to answer</h4>
-      <p>No preference or not sure yet.</p>
-    </div>
-  </div>
 </div>
 
 <script>
+// Quiz JS
 document.addEventListener("DOMContentLoaded", () => {
   const answers = {};
-  const adviceData = {
-    "texture": {text:"Uneven skin, rough patches, or dullness.", img:"https://via.placeholder.com/150?text=Texture"},
-    "wrinkles": {text:"Fine lines or wrinkles.", img:"https://via.placeholder.com/150?text=Wrinkles"},
-    "active-acne": {text:"Current breakouts with pimples.", img:"https://via.placeholder.com/150?text=Acne"},
-    "prevent-acne": {text:"Preventing future acne.", img:"https://via.placeholder.com/150?text=Prevent+Acne"},
-    "dry": {text:"Tight, flaky skin.", img:"https://via.placeholder.com/150?text=Dry+Skin"},
-    "dark-spots": {text:"Hyperpigmentation or sun spots.", img:"https://via.placeholder.com/150?text=Dark+Spots"},
-    "dark-circles": {text:"Puffiness/dark circles under eyes.", img:"https://via.placeholder.com/150?text=Dark+Circles"},
-    "post-acne": {text:"Marks left from previous acne.", img:"https://via.placeholder.com/150?text=Post+Acne"},
-    "general": {text:"General skincare routine.", img:"https://via.placeholder.com/150?text=General+Care"}
-  };
-
-  function showAdvice() {
-    const popup = document.getElementById("advice-popup");
-    let html = "<h3>Skin Concerns Explained</h3>";
-    let imagesHtml = "";
-    for(const key in adviceData){
-      html += `<p><strong>${key.replace(/-/g," ").toUpperCase()}:</strong> ${adviceData[key].text}</p>`;
-      imagesHtml += `<img src="${adviceData[key].img}" alt="${key}">`;
-    }
-    document.getElementById("advice-text").innerHTML = html;
-    document.getElementById("advice-images").innerHTML = imagesHtml;
-    popup.style.display = "block";
-  }
-  window.closeAdvice = () => { document.getElementById("advice-popup").style.display="none"; }
-  document.getElementById("advice-btn").addEventListener("click", showAdvice);
-
   let selected = null;
 
   function setupQuestion(qId, confirmId) {
@@ -318,9 +238,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const resultsDiv = document.getElementById("results");
     resultsDiv.innerHTML = "<h2>Your Skincare Recommendations</h2>";
     const products = [
-      {name:"Radiance Cream", img:"https://via.placeholder.com/150", link:"#"},
-      {name:"Glow Balance Serum", img:"https://via.placeholder.com/150", link:"#"},
-      {name:"Blemish Spot Treatment", img:"https://via.placeholder.com/150", link:"#"}
+      {name:"Radiance Cream", img:"https://via.placeholder.com/150", link:"shop.html"},
+      {name:"Glow Balance Serum", img:"https://via.placeholder.com/150", link:"shop.html"},
+      {name:"Blemish Spot Treatment", img:"https://via.placeholder.com/150", link:"shop.html"}
     ];
     products.forEach(p=>{
       const card = document.createElement("div");
