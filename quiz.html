@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skin Quiz | Glow Dynasty</title>
+  <style>
+    body {
+      font-family: 'Helvetica', Arial, sans-serif;
+      background-color: #fdfaf6;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 20px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #b86b5c;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 2rem;
+      color: #b86b5c;
+    }
+    .quiz-container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+    }
+    .question {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .option button {
+      width: 100%;
+      padding: 14px;
+      font-size: 1rem;
+      border: 1px solid #b86b5c;
+      border-radius: 12px;
+      background: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+      text-align: left;
+    }
+    .option button:hover {
+      background: #b86b5c;
+      color: #fff;
+    }
+    .advice {
+      display: inline-block;
+      margin-left: 10px;
+      color: #b86b5c;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 25px;
+      border-radius: 16px;
+      max-width: 400px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      z-index: 2000;
+    }
+    .popup img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+    .popup button {
+      margin-top: 15px;
+      padding: 10px 14px;
+      border: none;
+      background: #b86b5c;
+      color: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .results {
+      display: none;
+      margin-top: 20px;
+    }
+    .results h2 {
+      color: #b86b5c;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .product-card {
+      background: #fef9f4;
+      padding: 15px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .product-card h3 {
+      margin: 10px 0;
+      color: #b86b5c;
+    }
+    .product-card a {
+      color: #b86b5c;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .product-card a:hover {
+      text-decoration: underline;
+    }
+    button.restart-btn {
+      padding: 12px 20px;
+      border: none;
+      background: #b86b5c;
+      color: #fff;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: block;
+      margin: 20px auto 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Shop</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact</a>
+      <a href="#">Skin Quiz</a>
+    </nav>
+  </header>
+
+  <h1>Find Your Perfect Skincare</h1>
+
+  <div class="quiz-container">
+
+    <!-- Question 1 -->
+    <div class="question-section" id="q1">
+      <div class="question">1. What is your main skin concern?</div>
+      <div class="options">
+        <div class="option"><button data-value="texture">Skin texture/dullness <span class="advice" onclick="showAdvice('texture')">(!)</span></button></div>
+        <div class="option"><button data-value="wrinkles">Wrinkles & fine lines <span class="advice" onclick="showAdvice('wrinkles')">(!)</span></button></div>
+        <div class="option"><button data-value="active-acne">Active acne breakout <span class="advice" onclick="showAdvice('active-acne')">(!)</span></button></div>
+        <div class="option"><button data-value="prevent-acne">Help prevent new acne <span class="advice" onclick="showAdvice('prevent-acne')">(!)</span></button></div>
+        <div class="option"><button data-value="dry">Dry skin <span class="advice" onclick="showAdvice('dry')">(!)</span></button></div>
+        <div class="option"><button data-value="dark-spots">Dark spots <span class="advice" onclick="showAdvice('dark-spots')">(!)</span></button></div>
+        <div class="option"><button data-value="dark-circles">Dark circles & puffiness around eyes <span class="advice" onclick="showAdvice('dark-circles')">(!)</span></button></div>
+        <div class="option"><button data-value="post-acne">Post acne marks <span class="advice" onclick="showAdvice('post-acne')">(!)</span></button></div>
+        <div class="option"><button data-value="general">General skin care routine <span class="advice" onclick="showAdvice('general')">(!)</span></button></div>
+        <div class="option"><button data-value="prefer-not">Prefer not to answer</button></div>
+      </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question-section" id="q2" style="display:none;">
+      <div class="question">2. How does the skin on your face typically feel?</div>
+      <div class="options">
+        <div class="option"><button data-value="dry">Dry (tight & flaky)</button></div>
+        <div class="option"><button data-value="oily">Oily (greasy & shiny)</button></div>
+        <div class="option"><button data-value="combination">Combination (tight cheeks, shiny T-zone)</button></div>
+        <div class="option"><button data-value="normal">Normal/balanced (even, not too oily or dry)</button></div>
+      </div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question-section" id="q3" style="display:none;">
+      <div class="question">3. Is your skin sensitive?</div>
+      <div class="options">
+        <div class="option"><button data-value="yes">Yes</button></div>
+        <div class="option"><button data-value="no">No</button></div>
+        <div class="option"><button data-value="a-little">A little</button></div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="results" id="results"></div>
+
+  </div>
+
+  <!-- Popups for Advice -->
+  <div class="popup" id="advice-popup">
+    <div id="advice-text"></div>
+    <img id="advice-img" src="" alt="Skin example">
+    <button onclick="closeAdvice()">Close</button>
+  </div>
+
+  <script>
+    const answers = {};
+    const questionSections = document.querySelectorAll('.question-section');
+    const results = document.getElementById('results');
+
+    // Question buttons
+    document.querySelectorAll('.question-section button').forEach(button => {
+      button.addEventListener('click', (e) => {
+        const parent = button.closest('.question-section');
+        if (parent.id === 'q1') answers.q1 = button.dataset.value;
+        if (parent.id === 'q2') answers.q2 = button.dataset.value;
+        if (parent.id === 'q3') answers.q3 = button.dataset.value;
+
+        parent.style.display = 'none';
+        if (parent.nextElementSibling && parent.nextElementSibling.classList.contains('question-section')) {
+          parent.nextElementSibling.style.display = 'block';
+        } else {
+          showResults();
+        }
+      });
+    });
+
+    function showResults() {
+      results.innerHTML = '<h2>Your Personalized Skincare Recommendations</h2>';
+
+      const productsDB = {
+        "texture": {
+          "dry": [{name:"Radiance Cream", img:"https://via.placeholder.com/150", link:"#"}],
+          "oily": [{name:"Brightening Gel", img:"https://via.placeholder.com/150", link:"#"}],
+          "combination": [{name:"Glow Balance Serum", img:"https://via.placeholder.com/150", link:"#"}],
+          "normal": [{name:"Hydrating Lotion", img:"https://via.placeholder.com/150", link:"#"}]
+        },
+        "active-acne": {
+          "dry": [{name:"Acne Care Moisturizer", img:"https://via.placeholder.com/150", link:"#"}],
+          "oily": [{name:"Oil Control Serum", img:"https://via.placeholder.com/150", link:"#"}],
+          "combination": [{name:"Blemish Spot Treatment", img:"https://via.placeholder.com/150", link:"#"}],
+          "normal": [{name:"Acne Relief Gel", img:"https://via.placeholder.com/150", link:"#"}]
+        }
+        // Add more mapping for other concerns
+      };
+
+      const concern = answers.q1;
+      const type = answers.q2;
+      const sensitive = answers.q3;
+
+      let recommended = productsDB[concern] ? productsDB[concern][type] : [];
+
+      recommended.forEach(prod => {
+        const card = document.createElement('div');
+        card.classList.add('product-card');
+        card.innerHTML = `
+          <img src="${prod.img}" alt="${prod.name}">
+          <h3>${prod.name}</h3>
+          <a href="${prod.link}">Shop Now</a>
+        `;
+        results.appendChild(card);
+      });
+
+      const restartBtn = document.createElement('button');
+      restartBtn.classList.add('restart-btn');
+      restartBtn.innerText = "Restart Quiz";
+      restartBtn.onclick = restartQuiz;
+      results.appendChild(restartBtn);
+
+      results.style.display = 'block';
+      console.log('User Answers:', answers);
+    }
+
+    function restartQuiz() {
+      results.style.display = 'none';
+      answers.q1 = answers.q2 = answers.q3 = null;
+      questionSections.forEach(q => q.style.display = 'none');
+      document.getElementById('q1').style.display = 'block';
+    }
+
+    // Advice popups
+    const advicePopup = document.getElementById('advice-popup');
+    const adviceText = document.getElementById('advice-text');
+    const adviceImg = document.getElementById('advice-img');
+
+    const adviceData = {
+      "texture": {text: "Uneven skin, rough patches, or lack of radiance.", img: "https://via.placeholder.com/300?text=Texture+Dullness"},
+      "wrinkles": {text: "Fine lines and wrinkles due to aging or sun damage.", img: "https://via.placeholder.com/300?text=Wrinkles"},
+      "active-acne": {text: "Current breakouts with red pimples or cysts.", img: "https://via.placeholder.com/300?text=Active+Acne"},
+      "prevent-acne": {text: "Preventing future acne is your priority.", img: "https://via.placeholder.com/300?text=Prevent+Acne"},
+      "dry": {text: "Skin feels tight, flaky, and dehydrated.", img: "https://via.placeholder.com/300?text=Dry+Skin"},
+      "dark-spots": {text: "Hyperpigmentation or sun spots.", img: "https://via.placeholder.com/300?text=Dark+Spots"},
+      "dark-circles": {text: "Puffiness or dark circles under the eyes.", img: "https://via.placeholder.com/300?text=Dark+Circles"},
+      "post-acne": {text: "Marks left from previous acne.", img: "https://via.placeholder.com/300?text=Post+Acne"},
+      "general": {text: "General skincare, maintaining healthy skin.", img: "https://via.placeholder.com/300?text=General+Care"}
+    };
+
+    function showAdvice(type) {
+      adviceText.innerText = adviceData[type].text;
+      adviceImg.src = adviceData[type].img;
+      advicePopup.style.display = 'block';
+    }
+
+    function closeAdvice() {
+      advicePopup.style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
