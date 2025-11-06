@@ -14,17 +14,33 @@
       color: #333;
     }
 
-    /* Navigation */
+    /* Header */
+    header {
+      text-align: center;
+      padding: 40px 20px 10px;
+    }
+
+    header h1 {
+      color: #e89cb9;
+      font-size: 2rem;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+
+    header p {
+      color: #777;
+      font-size: 0.95rem;
+      margin: 5px 0 0 0;
+    }
+
+    /* Navigation below header */
     nav {
       background-color: #fff;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      padding: 15px 30px;
+      padding: 15px 0;
       display: flex;
       justify-content: center;
       gap: 25px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
     }
 
     nav a {
@@ -38,17 +54,7 @@
       color: #e89cb9;
     }
 
-    header {
-      text-align: center;
-      padding: 40px 20px 10px;
-    }
-
-    header h1 {
-      color: #e89cb9;
-      font-size: 2rem;
-      letter-spacing: 1px;
-    }
-
+    /* Quiz container */
     .quiz-container {
       max-width: 650px;
       margin: 40px auto 60px auto;
@@ -164,10 +170,15 @@
     }
   </style>
 </head>
-
 <body>
 
-  <!-- Navigation -->
+  <!-- Header -->
+  <header>
+    <h1>Glow Dynasty</h1>
+    <p>Discover your skin type and get personalized product picks ✨</p>
+  </header>
+
+  <!-- Navigation below header -->
   <nav>
     <a href="index.html">Home</a>
     <a href="shop.html">Shop</a>
@@ -176,11 +187,7 @@
     <a href="quiz.html">Skin Quiz</a>
   </nav>
 
-  <header>
-    <h1>Glow Dynasty</h1>
-    <p>Discover your skin type and get personalized product picks ✨</p>
-  </header>
-
+  <!-- Quiz Section -->
   <section id="skin-quiz" class="quiz-container">
     <h2>Find Your Perfect Skincare Routine</h2>
     <p>Take this quick quiz to discover your skin type and the best products for you!</p>
