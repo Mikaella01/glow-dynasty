@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Find Your Skin Type | Glow Dynasty</title>
+  <title>Skin Quiz | Glow Dynasty</title>
   <link rel="stylesheet" href="styles.css">
   <style>
     body {
@@ -14,9 +14,33 @@
       color: #333;
     }
 
+    /* Navigation */
+    nav {
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #e89cb9;
+    }
+
     header {
       text-align: center;
-      padding: 40px 0 10px;
+      padding: 40px 20px 10px;
     }
 
     header h1 {
@@ -26,10 +50,10 @@
     }
 
     .quiz-container {
-      max-width: 600px;
-      margin: 50px auto;
+      max-width: 650px;
+      margin: 40px auto 60px auto;
       background: #fff;
-      padding: 30px;
+      padding: 35px;
       border-radius: 20px;
       box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     }
@@ -37,7 +61,7 @@
     .quiz-container h2 {
       text-align: center;
       color: #333;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       margin-bottom: 10px;
     }
 
@@ -70,7 +94,7 @@
 
     button {
       display: block;
-      margin: 20px auto;
+      margin: 25px auto;
       background-color: #f5a6b4;
       color: white;
       border: none;
@@ -106,6 +130,19 @@
       margin-top: 15px;
     }
 
+    .product a {
+      text-decoration: none;
+      color: #333;
+      display: block;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .product a:hover {
+      transform: translateY(-5px);
+      color: #e89cb9;
+    }
+
     .product-grid img {
       width: 100%;
       border-radius: 10px;
@@ -119,14 +156,25 @@
 
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 25px 0;
       font-size: 0.85rem;
       color: #888;
+      background: #fff;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
     }
   </style>
 </head>
 
 <body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="quiz.html">Skin Quiz</a>
+  </nav>
 
   <header>
     <h1>Glow Dynasty</h1>
@@ -188,55 +236,70 @@
   </footer>
 
   <script>
-    document.getElementById("quizForm").addEventListener("submit", function(e) {
-      e.preventDefault();
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("quizForm").addEventListener("submit", function(e) {
+        e.preventDefault();
 
-      const gender = document.querySelector('input[name="gender"]:checked').value;
-      const age = document.querySelector('select[name="age"]').value;
-      const wash = document.querySelector('input[name="wash"]:checked').value;
-      const concerns = Array.from(document.querySelectorAll('input[name="concern"]:checked')).map(el => el.value);
+        const genderInput = document.querySelector('input[name="gender"]:checked');
+        const washInput = document.querySelector('input[name="wash"]:checked');
+        const ageSelect = document.querySelector('select[name="age"]');
+        const concernInputs = document.querySelectorAll('input[name="concern"]:checked');
 
-      let skinType = "";
-      if (wash === "tight") skinType = "Dry";
-      else if (wash === "shiny") skinType = "Oily";
-      else skinType = "Normal/Combination";
+        if (!genderInput || !washInput || !ageSelect.value) {
+          alert("Please answer all required questions.");
+          return;
+        }
 
-      let products = [];
+        const gender = genderInput.value;
+        const age = ageSelect.value;
+        const wash = washInput.value;
+        const concerns = Array.from(concernInputs).map(el => el.value);
 
-      if (skinType === "Dry") {
-        products = [
-          { name: "Laneige Water Bank Moisture Cream", img: "https://via.placeholder.com/150" },
-          { name: "Etude House Soon Jung 2x Barrier Intensive Cream", img: "https://via.placeholder.com/150" }
-        ];
-      } else if (skinType === "Oily") {
-        products = [
-          { name: "Innisfree Green Tea Balancing Toner", img: "https://via.placeholder.com/150" },
-          { name: "Cosrx Oil-Free Ultra-Moisturizing Lotion", img: "https://via.placeholder.com/150" }
-        ];
-      } else {
-        products = [
-          { name: "Klairs Rich Moist Soothing Cream", img: "https://via.placeholder.com/150" },
-          { name: "Dr. Jart+ Cicapair Cream", img: "https://via.placeholder.com/150" }
-        ];
-      }
+        let skinType = "";
+        if (wash === "tight") skinType = "Dry";
+        else if (wash === "shiny") skinType = "Oily";
+        else skinType = "Normal/Combination";
 
-      if (concerns.includes("acne")) {
-        products.push({ name: "Some By Mi AHA BHA PHA Miracle Toner", img: "https://via.placeholder.com/150" });
-      }
-      if (concerns.includes("aging")) {
-        products.push({ name: "Missha Time Revolution Night Repair Serum", img: "https://via.placeholder.com/150" });
-      }
+        let products = [];
 
-      document.getElementById("skinTypeResult").textContent = `${skinType} Skin`;
-      const productContainer = document.getElementById("productSuggestions");
-      productContainer.innerHTML = products.map(p => `
-        <div class="product">
-          <img src="${p.img}" alt="${p.name}">
-          <p>${p.name}</p>
-        </div>
-      `).join("");
+        // Products with images and shop links
+        if (skinType === "Dry") {
+          products = [
+            { name: "Laneige Water Bank Moisture Cream", img: "https://images.unsplash.com/photo-1596461404969-1197bb1e7b42?crop=entropy&cs=tinysrgb&fit=max&h=150&w=150", link: "shop.html#laneige-water-bank" },
+            { name: "Etude House Soon Jung 2x Barrier Intensive Cream", img: "https://images.unsplash.com/photo-1596949637604-c3ec03417a1b?crop=entropy&cs=tinysrgb&fit=max&h=150&w=150", link: "shop.html#etude-soon-jung" }
+          ];
+        } else if (skinType === "Oily") {
+          products = [
+            { name: "Innisfree Green Tea Balancing Toner", img: "https://images.unsplash.com/photo-1615995926311-6e74c6c5a1a4?crop=entropy&cs=tinysrgb&fit=max&h=150&w=150", link: "shop.html#innisfree-toner" },
+            { name: "Cosrx Oil-Free Ultra-Moisturizing Lotion", img: "https://images.unsplash.com/photo-1600963088790-c7a29941f6c7?crop=entropy&cs=tinysrgb&fit=max&h=150&w=150", link: "shop.html#cosrx-lotion" }
+          ];
+        } else {
+          products = [
+            { name: "Klairs Rich Moist Soothing Cream", img: "https://images.unsplash.com/photo-1611599533811-f9a41c75e89d?crop=entropy&cs=tinysrgb&fit=max&h=150&w=150", link: "shop.html#klairs-cream" },
+            { name: "Dr. Jart+ Cicapair Cream", img: "https://images.unsplash.com/photo-1596461404969-1197bb1e7b42?crop=entropy&cs=tinysrgb&fit=max&h=150&w=150", link: "shop.html#drjart-cicapair" }
+          ];
+        }
 
-      document.getElementById("results").classList.remove("hidden");
+        if (concerns.includes("acne")) {
+          products.push({ name: "Some By Mi AHA BHA PHA Miracle Toner", img: "https://images.unsplash.com/photo-1595791901630-6efb0ef9c7f6?crop=entropy&cs=tinysrgb&fit=max&h=150&w=150", link: "shop.html#somebymi-toner" });
+        }
+        if (concerns.includes("aging")) {
+          products.push({ name: "Missha Time Revolution Night Repair Serum", img: "https://images.unsplash.com/photo-1600963088790-c7a29941f6c7?crop=entropy&cs=tinysrgb&fit=max&h=150&w=150", link: "shop.html#missha-serum" });
+        }
+
+        document.getElementById("skinTypeResult").textContent = `${skinType} Skin`;
+        const productContainer = document.getElementById("productSuggestions");
+        productContainer.innerHTML = products.map(p => `
+          <div class="product">
+            <a href="${p.link}" target="_blank">
+              <img src="${p.img}" alt="${p.name}">
+              <p>${p.name}</p>
+            </a>
+          </div>
+        `).join("");
+
+        document.getElementById("results").classList.remove("hidden");
+      });
     });
   </script>
 
