@@ -4,173 +4,34 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Glow Dynasty - Skin Quiz</title>
-<link rel="stylesheet" href="style.css">
 <style>
-  body {
-    margin: 0;
-    font-family: 'Helvetica Neue', sans-serif;
-    background-color: #f8f9fa;
-    color: #333;
-  }
-
-  /* Navigation */
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #fff;
-    border-bottom: 1px solid #eee;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-
-  nav .logo {
-    font-weight: bold;
-    color: #b86b5c;
-    text-decoration: none;
-    font-size: 1.3rem;
-  }
-
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.2rem;
-    margin: 0;
-    padding: 0;
-  }
-
-  nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-  }
-
-  nav ul li a:hover {
-    color: #b86b5c;
-  }
-
-  /* Quiz container */
-  .quiz-container {
-    max-width: 800px;
-    margin: 50px auto;
-    background: #fff;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-  }
-
-  .question {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-
-  .options {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 12px;
-  }
-
-  .option-card {
-    background: #f9f9f9;
-    padding: 12px;
-    border-radius: 10px;
-    text-align: center;
-    border: 1px solid #eee;
-    cursor: pointer;
-    transition: 0.2s;
-  }
-
-  .option-card:hover {
-    border-color: #b86b5c;
-  }
-
-  .option-card.selected {
-    background: #b86b5c;
-    color: #fff;
-    border-color: #b86b5c;
-  }
-
-  .confirm-btn {
-    margin-top: 20px;
-    display: block;
-    padding: 10px 18px;
-    background: #b86b5c;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-
-  .confirm-btn:hover {
-    background: #a05a4c;
-  }
-
-  /* Results */
-  .results {
-    text-align: center;
-  }
-
-  .product-card {
-    margin: 16px 0;
-  }
-
-  .product-card a {
-    display: inline-block;
-    margin-top: 6px;
-    color: #b86b5c;
-    text-decoration: none;
-  }
-
-  .restart-btn {
-    margin-top: 30px;
-    background: #b86b5c;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-
-  .restart-btn:hover {
-    background: #a05a4c;
-  }
-
-  /* Popup */
-  .popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    border-radius: 10px;
-    padding: 25px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.2);
-    width: 80%;
-    max-width: 700px;
-    z-index: 1000;
-  }
-
-  .popup-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 12px;
-  }
-
-  .popup-grid img {
-    border-radius: 10px;
-    width: 100%;
-  }
+body {margin:0;font-family:'Helvetica Neue',sans-serif;background:#f8f9fa;color:#333;}
+nav {display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:10;}
+nav .logo {font-weight:bold;color:#b86b5c;text-decoration:none;font-size:1.3rem;}
+nav ul {list-style:none;display:flex;gap:1.2rem;margin:0;padding:0;}
+nav ul li a {text-decoration:none;color:#333;font-weight:500;}
+nav ul li a:hover {color:#b86b5c;}
+.quiz-container {max-width:800px;margin:50px auto;background:#fff;border-radius:10px;padding:30px;box-shadow:0 0 10px rgba(0,0,0,0.05);}
+.question {font-size:1.2rem;font-weight:600;margin-bottom:20px;text-align:center;}
+.options {display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
+.option-card {background:#f9f9f9;padding:12px;border-radius:10px;text-align:center;border:1px solid #eee;cursor:pointer;transition:0.2s;}
+.option-card:hover {border-color:#b86b5c;}
+.option-card.selected {background:#b86b5c;color:#fff;border-color:#b86b5c;}
+.confirm-btn {margin-top:20px;display:block;padding:10px 18px;background:#b86b5c;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:1rem;}
+.confirm-btn:hover {background:#a05a4c;}
+.results {text-align:center;}
+.product-card {margin:16px 0;}
+.product-card img {border-radius:10px;max-width:150px;margin:0 auto;display:block;}
+.product-card a {display:inline-block;margin-top:6px;color:#b86b5c;text-decoration:none;}
+.restart-btn {margin-top:30px;background:#b86b5c;color:white;padding:10px 20px;border:none;border-radius:6px;cursor:pointer;}
+.restart-btn:hover {background:#a05a4c;}
+.popup {display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;border-radius:10px;padding:25px;box-shadow:0 0 20px rgba(0,0,0,0.2);width:80%;max-width:700px;z-index:1000;}
+.popup-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;}
+.popup-grid img {border-radius:10px;width:100%;}
 </style>
 </head>
 <body>
 
-<!-- Navigation -->
 <nav>
   <a href="index.html" class="logo">Glow Dynasty</a>
   <ul>
@@ -184,79 +45,70 @@
 
 <div class="quiz-container">
 
-  <!-- Question 1 -->
-  <div class="question-section" id="q1">
-    <div class="question">1. What is your main skin concern?</div>
-    <div style="text-align:center; margin-bottom:12px;">
-      <button id="advice-btn" class="confirm-btn" style="background:#fff;color:#b86b5c;border:1px solid #eee;padding:10px 14px;">
-        Need advice
-      </button>
-    </div>
-    <div class="options" id="options-q1">
-      <div class="option-card" data-value="texture"><h4>Skin texture / dullness</h4></div>
-      <div class="option-card" data-value="wrinkles"><h4>Wrinkles & fine lines</h4></div>
-      <div class="option-card" data-value="active-acne"><h4>Active acne breakout</h4></div>
-      <div class="option-card" data-value="prevent-acne"><h4>Prevent new acne</h4></div>
-      <div class="option-card" data-value="dry"><h4>Dry skin</h4></div>
-      <div class="option-card" data-value="dark-spots"><h4>Dark spots</h4></div>
-      <div class="option-card" data-value="dark-circles"><h4>Dark circles & puffiness</h4></div>
-      <div class="option-card" data-value="post-acne"><h4>Post acne marks</h4></div>
-      <div class="option-card" data-value="general"><h4>General skin care</h4></div>
-      <div class="option-card" data-value="prefer-not"><h4>Prefer not to answer</h4></div>
-    </div>
-    <button class="confirm-btn" id="confirm-btn1" style="display:none;">Confirm</button>
+<div class="question-section" id="q1">
+  <div class="question">1. What is your main skin concern?</div>
+  <div style="text-align:center;margin-bottom:12px;">
+    <button id="advice-btn" class="confirm-btn" style="background:#fff;color:#b86b5c;border:1px solid #eee;padding:10px 14px;">Need advice</button>
   </div>
-
-  <!-- Question 2 -->
-  <div class="question-section" id="q2" style="display:none;">
-    <div class="question">2. How does the skin on your face typically feel?</div>
-    <div class="options" id="options-q2">
-      <div class="option-card" data-value="dry"><h4>Dry</h4></div>
-      <div class="option-card" data-value="oily"><h4>Oily</h4></div>
-      <div class="option-card" data-value="combination"><h4>Combination</h4></div>
-      <div class="option-card" data-value="normal"><h4>Normal / Balanced</h4></div>
-    </div>
-    <button class="confirm-btn" id="confirm-btn2" style="display:none;">Confirm</button>
+  <div class="options" id="options-q1">
+    <div class="option-card" data-value="texture"><h4>Skin texture / dullness</h4></div>
+    <div class="option-card" data-value="wrinkles"><h4>Wrinkles & fine lines</h4></div>
+    <div class="option-card" data-value="active-acne"><h4>Active acne breakout</h4></div>
+    <div class="option-card" data-value="prevent-acne"><h4>Prevent new acne</h4></div>
+    <div class="option-card" data-value="dry"><h4>Dry skin</h4></div>
+    <div class="option-card" data-value="dark-spots"><h4>Dark spots</h4></div>
+    <div class="option-card" data-value="dark-circles"><h4>Dark circles & puffiness</h4></div>
+    <div class="option-card" data-value="post-acne"><h4>Post acne marks</h4></div>
+    <div class="option-card" data-value="general"><h4>General skin care</h4></div>
+    <div class="option-card" data-value="prefer-not"><h4>Prefer not to answer</h4></div>
   </div>
-
-  <!-- Question 3 -->
-  <div class="question-section" id="q3" style="display:none;">
-    <div class="question">3. Is your skin sensitive?</div>
-    <div class="options" id="options-q3">
-      <div class="option-card" data-value="yes"><h4>Yes</h4></div>
-      <div class="option-card" data-value="no"><h4>No</h4></div>
-      <div class="option-card" data-value="a-little"><h4>A little</h4></div>
-    </div>
-    <button class="confirm-btn" id="confirm-btn3" style="display:none;">Confirm</button>
-  </div>
-
-  <!-- Question 4 -->
-  <div class="question-section" id="q4" style="display:none;">
-    <div class="question">4. How often do you wear sunscreen?</div>
-    <div class="options" id="options-q4">
-      <div class="option-card" data-value="daily"><h4>Every day</h4></div>
-      <div class="option-card" data-value="sometimes"><h4>Sometimes</h4></div>
-      <div class="option-card" data-value="rarely"><h4>Rarely / Never</h4></div>
-    </div>
-    <button class="confirm-btn" id="confirm-btn4" style="display:none;">Confirm</button>
-  </div>
-
-  <!-- Question 5 -->
-  <div class="question-section" id="q5" style="display:none;">
-    <div class="question">5. How would you describe your current skincare routine?</div>
-    <div class="options" id="options-q5">
-      <div class="option-card" data-value="minimal"><h4>Minimal</h4></div>
-      <div class="option-card" data-value="basic"><h4>Basic</h4></div>
-      <div class="option-card" data-value="advanced"><h4>Advanced / Multi-step</h4></div>
-    </div>
-    <button class="confirm-btn" id="confirm-btn5" style="display:none;">Confirm</button>
-  </div>
-
-  <!-- Results -->
-  <div id="results" class="results" style="display:none;"></div>
+  <button class="confirm-btn" id="confirm-btn1" style="display:none;">Confirm</button>
 </div>
 
-<!-- Advice Popup -->
+<div class="question-section" id="q2" style="display:none;">
+  <div class="question">2. How does the skin on your face typically feel?</div>
+  <div class="options" id="options-q2">
+    <div class="option-card" data-value="dry"><h4>Dry</h4></div>
+    <div class="option-card" data-value="oily"><h4>Oily</h4></div>
+    <div class="option-card" data-value="combination"><h4>Combination</h4></div>
+    <div class="option-card" data-value="normal"><h4>Normal / Balanced</h4></div>
+  </div>
+  <button class="confirm-btn" id="confirm-btn2" style="display:none;">Confirm</button>
+</div>
+
+<div class="question-section" id="q3" style="display:none;">
+  <div class="question">3. Is your skin sensitive?</div>
+  <div class="options" id="options-q3">
+    <div class="option-card" data-value="yes"><h4>Yes</h4></div>
+    <div class="option-card" data-value="no"><h4>No</h4></div>
+    <div class="option-card" data-value="a-little"><h4>A little</h4></div>
+  </div>
+  <button class="confirm-btn" id="confirm-btn3" style="display:none;">Confirm</button>
+</div>
+
+<div class="question-section" id="q4" style="display:none;">
+  <div class="question">4. How often do you wear sunscreen?</div>
+  <div class="options" id="options-q4">
+    <div class="option-card" data-value="daily"><h4>Every day</h4></div>
+    <div class="option-card" data-value="sometimes"><h4>Sometimes</h4></div>
+    <div class="option-card" data-value="rarely"><h4>Rarely / Never</h4></div>
+  </div>
+  <button class="confirm-btn" id="confirm-btn4" style="display:none;">Confirm</button>
+</div>
+
+<div class="question-section" id="q5" style="display:none;">
+  <div class="question">5. How would you describe your current skincare routine?</div>
+  <div class="options" id="options-q5">
+    <div class="option-card" data-value="minimal"><h4>Minimal</h4></div>
+    <div class="option-card" data-value="basic"><h4>Basic</h4></div>
+    <div class="option-card" data-value="advanced"><h4>Advanced / Multi-step</h4></div>
+  </div>
+  <button class="confirm-btn" id="confirm-btn5" style="display:none;">Confirm</button>
+</div>
+
+<div id="results" class="results" style="display:none;"></div>
+</div>
+
 <div class="popup" id="advice-popup" aria-hidden="true">
   <div style="display:flex; justify-content:space-between; align-items:center;">
     <h3 style="margin:0; color:#b86b5c;">Skin Concerns Explained</h3>
@@ -269,58 +121,48 @@
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", ()=> {
+document.addEventListener("DOMContentLoaded", ()=>{
   const adviceData = {
     "texture": {title:"Skin texture / dullness", text:"Uneven skin and rough patches. Try mild exfoliation + hydrating formulas.", img:"https://picsum.photos/150/150?random=10"},
     "wrinkles": {title:"Wrinkles & fine lines", text:"Look for retinol/peptides and consistent hydration + SPF.", img:"https://picsum.photos/150/150?random=11"},
     "active-acne": {title:"Active acne breakout", text:"Salicylic acid, benzoyl peroxide spot treatments, and gentle cleansing help.", img:"https://picsum.photos/150/150?random=12"},
     "prevent-acne": {title:"Prevent acne", text:"Oil-free hydration, non-comedogenic products, and consistent routine are key.", img:"https://picsum.photos/150/150?random=13"},
-    "dry": {title:"Dry skin", text:"Use humectants (hyaluronic acid) + occlusives (cream/mask) and avoid harsh cleansing.", img:"https://picsum.photos/150/150?random=14"},
-    "dark-spots": {title:"Dark spots", text:"Vitamin C and brightening ingredients plus daily SPF reduce hyperpigmentation.", img:"https://picsum.photos/150/150?random=15"},
-    "dark-circles": {title:"Dark circles & puffiness", text:"Eye creams with caffeine, cooling masks, and adequate sleep help.", img:"https://picsum.photos/150/150?random=16"},
-    "post-acne": {title:"Post acne marks", text:"Niacinamide and gentle exfoliation can fade post-acne pigmentation.", img:"https://picsum.photos/150/150?random=17"},
-    "general": {title:"General skincare", text:"A basic routine: gentle cleanser, moisturizer, SPF. Add targeted actives as needed.", img:"https://picsum.photos/150/150?random=18"},
-    "prefer-not": {title:"Prefer not to answer", text:"No worries — try the basics and consult a dermatologist for personalized guidance.", img:"https://picsum.photos/150/150?random=19"}
+    "dry": {title:"Dry skin", text:"Use humectants + occlusives and avoid harsh cleansing.", img:"https://picsum.photos/150/150?random=14"},
+    "dark-spots": {title:"Dark spots", text:"Vitamin C and SPF reduce hyperpigmentation.", img:"https://picsum.photos/150/150?random=15"},
+    "dark-circles": {title:"Dark circles & puffiness", text:"Eye creams with caffeine, cooling masks, and sleep help.", img:"https://picsum.photos/150/150?random=16"},
+    "post-acne": {title:"Post acne marks", text:"Niacinamide + gentle exfoliation fade pigmentation.", img:"https://picsum.photos/150/150?random=17"},
+    "general": {title:"General skincare", text:"Gentle cleanser, moisturizer, SPF, add actives as needed.", img:"https://picsum.photos/150/150?random=18"},
+    "prefer-not": {title:"Prefer not to answer", text:"Try basics and consult dermatologist if needed.", img:"https://picsum.photos/150/150?random=19"}
   };
 
   const adviceGrid = document.getElementById('advice-grid');
-  for (const key in adviceData) {
-    const card = document.createElement('div');
-    card.innerHTML = `<img src="${adviceData[key].img}" alt="${adviceData[key].title}"><h4 style="color:#b86b5c;margin:6px 0 4px 0;">${adviceData[key].title}</h4><p style="color:#555;font-size:0.95rem;">${adviceData[key].text}</p>`;
+  for(const key in adviceData){
+    const card=document.createElement('div');
+    card.innerHTML=`<img src="${adviceData[key].img}" alt="${adviceData[key].title}"><h4 style="color:#b86b5c;margin:6px 0 4px 0;">${adviceData[key].title}</h4><p style="color:#555;font-size:0.95rem;">${adviceData[key].text}</p>`;
     adviceGrid.appendChild(card);
   }
 
-  document.getElementById('advice-btn').addEventListener('click', ()=> {
-    document.getElementById('advice-popup').style.display = 'block';
-    document.getElementById('advice-popup').setAttribute('aria-hidden','false');
-  });
-  window.closeAdvice = ()=> {
-    document.getElementById('advice-popup').style.display = 'none';
-    document.getElementById('advice-popup').setAttribute('aria-hidden','true');
-  };
+  document.getElementById('advice-btn').addEventListener('click', ()=>{document.getElementById('advice-popup').style.display='block';document.getElementById('advice-popup').setAttribute('aria-hidden','false');});
+  window.closeAdvice = ()=>{document.getElementById('advice-popup').style.display='none';document.getElementById('advice-popup').setAttribute('aria-hidden','true');};
 
-  const answers = {};
-  function setupQuestion(qId, confirmId) {
-    const container = document.getElementById(qId);
-    const options = container.querySelectorAll('.option-card');
-    const confirmBtn = document.getElementById(confirmId);
-    let selected = null;
-
-    options.forEach(opt => {
-      opt.addEventListener('click', () => {
-        options.forEach(o=> o.classList.remove('selected'));
-        opt.classList.add('selected');
-        selected = opt.dataset.value;
-        confirmBtn.style.display = 'inline-block';
-      });
-    });
-
-    confirmBtn.addEventListener('click', () => {
-      if (!selected) return;
-      answers[qId] = selected;
-      container.style.display = 'none';
-      const next = document.getElementById(`q${parseInt(qId.slice(1))+1}`);
-      if (next) next.style.display = 'block';
+  const answers={};
+  function setupQuestion(qId, confirmId){
+    const container=document.getElementById(qId);
+    const options=container.querySelectorAll('.option-card');
+    const confirmBtn=document.getElementById(confirmId);
+    let selected=null;
+    options.forEach(opt=>{opt.addEventListener('click', ()=>{
+      options.forEach(o=>o.classList.remove('selected'));
+      opt.classList.add('selected');
+      selected=opt.dataset.value;
+      confirmBtn.style.display='inline-block';
+    });});
+    confirmBtn.addEventListener('click', ()=>{
+      if(!selected) return;
+      answers[qId]=selected;
+      container.style.display='none';
+      const next=document.getElementById(`q${parseInt(qId.slice(1))+1}`);
+      if(next) next.style.display='block';
       else showResults();
     });
   }
@@ -331,41 +173,37 @@ document.addEventListener("DOMContentLoaded", ()=> {
   setupQuestion('q4','confirm-btn4');
   setupQuestion('q5','confirm-btn5');
 
-  function showResults() {
-    const results = document.getElementById('results');
-    results.style.display = 'block';
-    results.innerHTML = '<h2 style="color:#b86b5c;text-align:center;">Your Skincare Recommendations</h2>';
-    const sampleProducts = [
+  function showResults(){
+    const results=document.getElementById('results');
+    results.style.display='block';
+    results.innerHTML='<h2 style="color:#b86b5c;text-align:center;">Your Skincare Recommendations</h2>';
+    const sampleProducts=[
       {name:"Radiance Cream", img:"https://picsum.photos/150/150?random=30", link:"shop.html"},
       {name:"Glow Balance Serum", img:"https://picsum.photos/150/150?random=31", link:"shop.html"},
       {name:"Blemish Spot Treatment", img:"https://picsum.photos/150/150?random=32", link:"shop.html"}
     ];
     sampleProducts.forEach(p=>{
-      const card = document.createElement('div');
-      card.className = 'product-card';
-      card.innerHTML = `
-        <img src="${p.img}" alt="${p.name}" style="border-radius:10px;max-width:150px;margin:0 auto;display:block;">
-        <h3 style="margin-top:10px;">${p.name}</h3>
-        <a href="${p.link}">Shop Now</a>
-      `;
+      const card=document.createElement('div');
+      card.className='product-card';
+      card.innerHTML=`<img src="${p.img}" alt="${p.name}"><h3>${p.name}</h3><a href="${p.link}">Shop Now</a>`;
       results.appendChild(card);
     });
-
-    const restart = document.createElement('button');
-    restart.className = 'restart-btn';
-    restart.textContent = 'Restart Quiz';
-    restart.onclick = restartQuiz;
+    const restart=document.createElement('button');
+    restart.className='restart-btn';
+    restart.textContent='Restart Quiz';
+    restart.onclick=restartQuiz;
     results.appendChild(restart);
     results.scrollIntoView({behavior:'smooth'});
   }
 
-  window.restartQuiz = function(){
-    document.querySelectorAll('.question-section').forEach(q=> q.style.display='none');
+  function restartQuiz(){
+    document.querySelectorAll('.question-section').forEach(q=>q.style.display='none');
     document.getElementById('q1').style.display='block';
     document.getElementById('results').style.display='none';
-    document.querySelectorAll('.option-card').forEach(o=> o.classList.remove('selected'));
-    document.querySelectorAll('.confirm-btn').forEach(b=> b.style.display='none');
-  };
+    document.querySelectorAll('.option-card').forEach(o=>o.classList.remove('selected'));
+    document.querySelectorAll('.confirm-btn').forEach(b=>b.style.display='none');
+  }
+  window.restartQuiz=restartQuiz;
 });
 </script>
 </body>
